@@ -3,19 +3,19 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import Account from '../../src/containers/Account'
-import Login from '../../src/containers/Account/Login'
+import Account from '../../../src/containers/Account'
+import Login from '../../../src/containers/Account/Login'
 import {
   PasswordRecoveryForm,
   PasswordRecoveryConfirmation,
-} from '../../src/containers/Account/PasswordRecovery'
+} from '../../../src/containers/Account/PasswordRecovery'
 import {
   SignUpForm,
   SignUpConfirmation,
   InvalidEmailError,
-} from '../../src/containers/Account/SignUp'
-import Unregistered from '../../src/containers/Account/UnregisteredPresentation'
-import Registered from '../../src/containers/Account/RegisteredPresentation'
+} from '../../../src/containers/Account/SignUp'
+import Unregistered from '../../../src/containers/Account/UnregisteredPresentation'
+import Registered from '../../../src/containers/Account/RegisteredPresentation'
 
 const Placeholder = props => (
   <svg viewBox="0 0 26.458 26.458" {...props}>
@@ -50,7 +50,7 @@ const unregisteredPresentation = (
   />
 )
 
-storiesOf('Account', module)
+storiesOf('Pages', module)
   .add('Login', () => (
     <Account
       // eslint-disable-next-line

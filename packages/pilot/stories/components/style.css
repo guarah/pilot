@@ -1,0 +1,8 @@
+.section {
+  padding: 15px;
+  counter-reset: section;
+}
+
+.section > h2 {
+  margin: 0 0 15px;
+}
