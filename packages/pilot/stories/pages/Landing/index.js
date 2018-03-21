@@ -133,3 +133,8 @@ storiesOf('Pages', module)
       secondaryContent={unregisteredPresentation}
     />
   ))
+  .add('User Settings', () => (
+    <UserSettings
+
+    />
+  ))
