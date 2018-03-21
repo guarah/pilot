@@ -4,7 +4,6 @@
 .recipient {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border: solid 1px var(--color-light-iron-50);
   background-color: var(--color-light-smoke-40);
   padding: var(--spacing-large) var(--spacing-medium) var(--spacing-medium) var(--spacing-medium);
   height: 148px;

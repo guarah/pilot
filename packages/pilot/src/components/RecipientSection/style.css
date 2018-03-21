@@ -1,0 +1,21 @@
+.recipienSection {
+  border: solid 1px #d1d5d8;
+
+  & table,
+  & table tr {
+    border: none;
+  }
+
+  & table th {
+    background-color: #f3f3f3;
+  }
+}
+
+.divider {
+  display: block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d1d5d8;
+  margin: 0 16px 0px 16px;
+}

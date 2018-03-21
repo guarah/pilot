@@ -7,16 +7,14 @@ import {
   Table,
 } from 'former-kit'
 
-import getColumnFormatter from '../../formatters/columnTranslator'
 import RecipientCard from '../RecipientCard'
-import columns from './installmentTableColumns'
+import style from './style.css'
 
 class RecipientSection extends PureComponent {
   constructor (props) {
     super(props)
-    const formatColumns = getColumnFormatter(props.t)
     this.state = {
-      columns: formatColumns(columns),
+      columns: props.columns,
       hasError: false,
     }
   }
@@ -28,28 +26,47 @@ class RecipientSection extends PureComponent {
   render () {
     const {
       collapsed,
-      onDetailsClick,
-      t,
+      collapsedTitle,
       installments,
-      ...recipientProps
+      liabilities,
+      liabilitiesLabel,
+      name,
+      netAmount,
+      netAmountLabel,
+      onDetailsClick,
+      outAmountLabel,
+      status,
+      statusLabel,
+      title,
+      totalAmount,
+      totalLabel,
     } = this.props
     const { hasError } = this.state
 
     return (
-      <Card>
+      <Card className={style.recipienSection}>
         {
           !hasError &&
           <Fragment>
             <RecipientCard
-              {...recipientProps}
-              t={t}
+              liabilities={liabilities}
+              liabilitiesLabel={liabilitiesLabel}
+              name={name}
+              netAmount={netAmount}
+              netAmountLabel={netAmountLabel}
+              outAmountLabel={outAmountLabel}
+              status={status}
+              statusLabel={statusLabel}
+              totalAmount={totalAmount}
+              totalLabel={totalLabel}
             />
             <CardSection
-              collapsedTitle={t('recipient.collapsedTitle')}
+              collapsedTitle={collapsedTitle}
               collapsed={collapsed}
-              title={t('recipient.title')}
-              onTitleClick={this.props.onDetailsClick}
+              title={title}
+              onTitleClick={onDetailsClick}
             >
+              <hr className={style.divider} />
               <Table
                 columns={this.state.columns}
                 rows={installments}
@@ -69,6 +86,11 @@ class RecipientSection extends PureComponent {
 
 RecipientSection.propTypes = {
   collapsed: PropTypes.bool,
+  columns: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    accessor: PropTypes.arrayOf(PropTypes.string),
+    orderable: PropTypes.bool,
+  })).isRequired,
   installments: PropTypes.arrayOf(PropTypes.shape({
     number: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     status: PropTypes.string,
@@ -83,17 +105,29 @@ RecipientSection.propTypes = {
     }),
   })).isRequired,
   liabilities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  liabilitiesLabel: PropTypes.string,
   name: PropTypes.string.isRequired,
   netAmount: PropTypes.number.isRequired,
+  netAmountLabel: PropTypes.string,
+  outAmountLabel: PropTypes.string,
   onDetailsClick: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
-  t: PropTypes.func,
+  statusLabel: PropTypes.string,
   totalAmount: PropTypes.number.isRequired,
+  title: PropTypes.string,
+  collapsedTitle: PropTypes.string,
+  totalLabel: PropTypes.string,
 }
 
 RecipientSection.defaultProps = {
   collapsed: true,
-  t: t => t,
+  collapsedTitle: '',
+  liabilitiesLabel: '',
+  netAmountLabel: '',
+  outAmountLabel: '',
+  statusLabel: '',
+  title: '',
+  totalLabel: '',
 }
 
 export default RecipientSection

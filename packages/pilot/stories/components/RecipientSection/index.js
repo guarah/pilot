@@ -3,12 +3,18 @@ import React, { PureComponent } from 'react'
 import Section from '../Section'
 import mock from '../../../src/components/RecipientSection/recipientMock'
 import RecipientSection from '../../../src/components/RecipientSection'
+import columns from '../../../src/components/RecipientSection/installmentTableColumns'
+import getColumnFormatter from '../../../src/formatters/columnTranslator'
 
+const t = t => t
 class RecipientSectionState extends PureComponent {
   constructor () {
     super()
     this.handleCollapse = this.handleCollapse.bind(this)
+
+    const formatColumns = getColumnFormatter(t)
     this.state = {
+      columns: formatColumns(columns),
       collapsed: true,
       ...mock,
     }
@@ -22,6 +28,7 @@ class RecipientSectionState extends PureComponent {
     const {
       amount,
       collapsed,
+      columns,
       installments,
       liabilities,
       name,
@@ -33,13 +40,21 @@ class RecipientSectionState extends PureComponent {
       <Section>
         <RecipientSection
           collapsed={collapsed}
+          collapsedTitle="VISUALIZAR PARCELAS"
+          columns={columns}
           installments={installments}
           liabilities={liabilities}
+          liabilitiesLabel="Responsável por"
           name={name}
           netAmount={net_amount} // eslint-disable-line camelcase
+          netAmountLabel="TOTAL LÍQUIDO(R$)"
           onDetailsClick={this.handleCollapse}
+          outAmountLabel="TOTAL DE SAÍDAS(R$)"
           status={status}
+          statusLabel="Status da parcela"
+          title="OCULTAR PARCELAS"
           totalAmount={amount}
+          totalLabel="TOTAL BRUTO(R$)"
         />
       </Section>
     )

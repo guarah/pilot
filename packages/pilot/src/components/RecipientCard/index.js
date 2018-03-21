@@ -15,11 +15,15 @@ import style from './style.css'
 
 const RecipientCard = ({
   liabilities,
+  liabilitiesLabel,
   name,
   netAmount,
+  netAmountLabel,
+  outAmountLabel,
   status,
+  statusLabel,
   totalAmount,
-  t,
+  totalLabel,
 }) => (
   <div className={style.recipient}>
     <Grid >
@@ -38,7 +42,7 @@ const RecipientCard = ({
           className={style.summary}
         >
           <span>
-            {t('recipient.total')}
+            {totalLabel}
           </span>
           <span className={classNames(
               style.total,
@@ -57,14 +61,14 @@ const RecipientCard = ({
           align="start"
           className={style.description}
         >
-          { `${t('recipient.liabilities')}: ${join(', ', liabilities)}` }
+          { `${liabilitiesLabel}: ${join(', ', liabilities)}` }
         </Col>
         <Col
           align="end"
           className={style.summary}
         >
           <span>
-            {t('recipient.outAmount')}
+            {outAmountLabel}
           </span>
           <span className={style.amount}>
             { numberFormat(netAmount - totalAmount) }
@@ -79,7 +83,7 @@ const RecipientCard = ({
           align="start"
           className={style.description}
         >
-          {legendStatus[status].text}
+          {statusLabel}
           <Legend
             color={legendStatus[status].color}
             acronym={legendStatus[status].acronym}
@@ -93,7 +97,7 @@ const RecipientCard = ({
           className={style.summary}
         >
           <span>
-            {t('recipient.netAmount')}
+            {netAmountLabel}
           </span>
           <span className={style.amount}>
             { numberFormat(netAmount) }
@@ -106,15 +110,23 @@ const RecipientCard = ({
 
 RecipientCard.propTypes = {
   liabilities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  liabilitiesLabel: PropTypes.string,
   name: PropTypes.string.isRequired,
   netAmount: PropTypes.number.isRequired,
+  netAmountLabel: PropTypes.string,
+  outAmountLabel: PropTypes.string,
   status: PropTypes.string.isRequired,
+  statusLabel: PropTypes.string,
   totalAmount: PropTypes.number.isRequired,
-  t: PropTypes.func,
+  totalLabel: PropTypes.string,
 }
 
 RecipientCard.defaultProps = {
-  t: t => t,
+  liabilitiesLabel: '',
+  netAmountLabel: '',
+  outAmountLabel: '',
+  statusLabel: '',
+  totalLabel: '',
 }
 
 export default RecipientCard
