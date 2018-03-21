@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import classNames from 'classnames'
 import {
   Card,
   CardSection,
@@ -25,6 +26,7 @@ class RecipientSection extends PureComponent {
 
   render () {
     const {
+      className,
       collapsed,
       collapsedTitle,
       installments,
@@ -44,7 +46,11 @@ class RecipientSection extends PureComponent {
     const { hasError } = this.state
 
     return (
-      <Card className={style.recipienSection}>
+      <Card className={classNames(
+          style.recipientSection,
+          className
+        )}
+      >
         {
           !hasError &&
           <Fragment>
@@ -60,13 +66,13 @@ class RecipientSection extends PureComponent {
               totalAmount={totalAmount}
               totalLabel={totalLabel}
             />
+            <hr className={style.divider} />
             <CardSection
               collapsedTitle={collapsedTitle}
               collapsed={collapsed}
               title={title}
               onTitleClick={onDetailsClick}
             >
-              <hr className={style.divider} />
               <Table
                 columns={this.state.columns}
                 rows={installments}
@@ -85,7 +91,9 @@ class RecipientSection extends PureComponent {
 }
 
 RecipientSection.propTypes = {
+  className: PropTypes.string,
   collapsed: PropTypes.bool,
+  collapsedTitle: PropTypes.string,
   columns: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     accessor: PropTypes.arrayOf(PropTypes.string),
@@ -109,17 +117,17 @@ RecipientSection.propTypes = {
   name: PropTypes.string.isRequired,
   netAmount: PropTypes.number.isRequired,
   netAmountLabel: PropTypes.string,
-  outAmountLabel: PropTypes.string,
   onDetailsClick: PropTypes.func.isRequired,
+  outAmountLabel: PropTypes.string,
   status: PropTypes.string.isRequired,
   statusLabel: PropTypes.string,
-  totalAmount: PropTypes.number.isRequired,
   title: PropTypes.string,
-  collapsedTitle: PropTypes.string,
+  totalAmount: PropTypes.number.isRequired,
   totalLabel: PropTypes.string,
 }
 
 RecipientSection.defaultProps = {
+  className: '',
   collapsed: true,
   collapsedTitle: '',
   liabilitiesLabel: '',

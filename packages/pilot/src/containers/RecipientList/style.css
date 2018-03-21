@@ -1,0 +1,32 @@
+.titleContainer {
+  padding-bottom: 0px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.total {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.recipientsLabel {
+  font-size: 14px;
+}
+
+.totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  counter-reset: section;
+}
+
+.subtitle {
+  font-size: 12px;
+}
+
+.recipient:not(:last-child) {
+  margin-bottom: 24px;
+}

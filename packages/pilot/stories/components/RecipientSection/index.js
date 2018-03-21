@@ -3,10 +3,10 @@ import React, { PureComponent } from 'react'
 import Section from '../Section'
 import mock from '../../../src/components/RecipientSection/recipientMock'
 import RecipientSection from '../../../src/components/RecipientSection'
-import columns from '../../../src/components/RecipientSection/installmentTableColumns'
+import installmentColumns from '../../../src/components/RecipientSection/installmentTableColumns'
 import getColumnFormatter from '../../../src/formatters/columnTranslator'
 
-const t = t => t
+const t = translation => translation
 class RecipientSectionState extends PureComponent {
   constructor () {
     super()
@@ -14,7 +14,7 @@ class RecipientSectionState extends PureComponent {
 
     const formatColumns = getColumnFormatter(t)
     this.state = {
-      columns: formatColumns(columns),
+      columns: formatColumns(installmentColumns),
       collapsed: true,
       ...mock,
     }
