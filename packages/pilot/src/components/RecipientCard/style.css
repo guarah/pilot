@@ -2,9 +2,6 @@
 @import "former-kit-skin-pagarme/dist/styles/spacing.css";
 
 .recipient {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  background-color: var(--color-light-smoke-40);
 
   & > div {
     height: 100%;
@@ -18,10 +15,6 @@
 
 .row {
   align-items: flex-end;
-}
-
-.description > div {
-  padding-left: 5px;
 }
 
 .total {
