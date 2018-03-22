@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import {
   Card,
   CardSection,
+  CardSectionTitle,
   Table,
 } from 'former-kit'
 
@@ -15,13 +16,32 @@ class RecipientSection extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      columns: props.columns,
       hasError: false,
     }
+    this.renderColumn = this.renderColumn.bind(this)
   }
 
   componentDidCatch () {
     this.setState({ hasError: true })
+  }
+
+  renderColumn () {
+    const {
+      collapsed,
+      columns,
+      installments,
+    } = this.props
+
+    if (!collapsed) {
+      return (
+        <Table
+          columns={columns}
+          rows={installments}
+          showAggregationRow
+        />
+      )
+    }
+    return null
   }
 
   render () {
@@ -29,7 +49,6 @@ class RecipientSection extends PureComponent {
       className,
       collapsed,
       collapsedTitle,
-      installments,
       liabilities,
       liabilitiesLabel,
       name,
@@ -67,16 +86,12 @@ class RecipientSection extends PureComponent {
               totalLabel={totalLabel}
             />
             <hr className={style.divider} />
-            <CardSection
-              collapsedTitle={collapsedTitle}
-              collapsed={collapsed}
-              title={title}
-              onTitleClick={onDetailsClick}
-            >
-              <Table
-                columns={this.state.columns}
-                rows={installments}
-                onOrderChange={() => null}
+            <CardSection >
+              {this.renderColumn()}
+              <CardSectionTitle
+                collapsed={collapsed}
+                title={collapsed ? collapsedTitle : title}
+                onClick={onDetailsClick}
               />
             </CardSection>
           </Fragment>

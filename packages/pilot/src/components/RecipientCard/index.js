@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { join } from 'ramda'
 import {
+  CardContent,
   Col,
   Grid,
   Legend,
@@ -25,87 +26,89 @@ const RecipientCard = ({
   totalAmount,
   totalLabel,
 }) => (
-  <div className={style.recipient}>
-    <Grid >
-      <Row
-        flex
-        className={style.row}
-      >
-        <Col
-          align="start"
-          className={style.description}
+  <CardContent>
+    <div className={style.recipient}>
+      <Grid >
+        <Row
+          flex
+          className={style.row}
         >
-          <span className={style.title}>{name}</span>
-        </Col>
-        <Col
-          align="end"
-          className={style.summary}
-        >
-          <span>
-            {totalLabel}
-          </span>
-          <span className={classNames(
-              style.total,
-              style.amount
-            )}
+          <Col
+            align="start"
+            className={style.description}
           >
-            {numberFormat(totalAmount)}
-          </span>
-        </Col>
-      </Row>
-      <Row
-        flex
-        className={style.row}
-      >
-        <Col
-          align="start"
-          className={style.description}
-        >
-          { `${liabilitiesLabel}: ${join(', ', liabilities)}` }
-        </Col>
-        <Col
-          align="end"
-          className={style.summary}
-        >
-          <span>
-            {outAmountLabel}
-          </span>
-          <span className={style.amount}>
-            { numberFormat(netAmount - totalAmount) }
-          </span>
-        </Col>
-      </Row>
-      <Row
-        flex
-        className={style.row}
-      >
-        <Col
-          align="start"
-          className={style.description}
-        >
-          {statusLabel}
-          <Legend
-            color={legendStatus[status].color}
-            acronym={legendStatus[status].acronym}
-            hideLabel
+            <span className={style.title}>{name}</span>
+          </Col>
+          <Col
+            align="end"
+            className={style.summary}
           >
-            {legendStatus[status].text}
-          </Legend>
-        </Col>
-        <Col
-          align="end"
-          className={style.summary}
+            <span>
+              {totalLabel}
+            </span>
+            <span className={classNames(
+                style.total,
+                style.amount
+              )}
+            >
+              {numberFormat(totalAmount)}
+            </span>
+          </Col>
+        </Row>
+        <Row
+          flex
+          className={style.row}
         >
-          <span>
-            {netAmountLabel}
-          </span>
-          <span className={style.amount}>
-            { numberFormat(netAmount) }
-          </span>
-        </Col>
-      </Row>
-    </Grid>
-  </div>
+          <Col
+            align="start"
+            className={style.description}
+          >
+            { `${liabilitiesLabel}: ${join(', ', liabilities)}` }
+          </Col>
+          <Col
+            align="end"
+            className={style.summary}
+          >
+            <span>
+              {outAmountLabel}
+            </span>
+            <span className={style.amount}>
+              { numberFormat(netAmount - totalAmount) }
+            </span>
+          </Col>
+        </Row>
+        <Row
+          flex
+          className={style.row}
+        >
+          <Col
+            align="start"
+            className={style.description}
+          >
+            {statusLabel}
+            <Legend
+              color={legendStatus[status].color}
+              acronym={legendStatus[status].acronym}
+              hideLabel
+            >
+              {legendStatus[status].text}
+            </Legend>
+          </Col>
+          <Col
+            align="end"
+            className={style.summary}
+          >
+            <span>
+              {netAmountLabel}
+            </span>
+            <span className={style.amount}>
+              { numberFormat(netAmount) }
+            </span>
+          </Col>
+        </Row>
+      </Grid>
+    </div>
+  </CardContent>
 )
 
 RecipientCard.propTypes = {

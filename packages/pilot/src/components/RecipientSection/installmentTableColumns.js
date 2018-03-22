@@ -1,14 +1,30 @@
 import React from 'react'
 import {
-  juxt,
+  always,
+  both,
+  complement,
   ifElse,
+  is,
   isNil,
+  juxt,
+  map,
   pipe,
   prop,
+  sum,
+  unapply,
+  unless,
 } from 'ramda'
 
 import currencyFormatter from '../../formatters/currency'
 import dateFormatter from '../../formatters/longDate'
+
+
+const getNumber = unless(
+  both(is(Number), complement(Number.isNaN)),
+  always(0)
+)
+
+const sumParameters = unapply(pipe(map(getNumber), sum))
 
 /* eslint-disable camelcase */
 const getPaymentDatesComponent = ([payment_date, original_payment_date]) => (
@@ -52,54 +68,72 @@ const renderPaymentDate = ifElse(
 
 const columns = [
   {
-    title: 'installment.number',
     accessor: ['number'],
+    aggregationTitle: 'TOTAIS',
+    align: 'center',
     orderable: false,
+    title: 'installment.number',
   },
   {
-    title: 'installment.status',
     accessor: ['status'],
     orderable: false,
+    title: 'installment.status',
   },
   {
-    title: 'installment.payment_date',
     accessor: ['payment_date'],
+    align: 'center',
+    orderable: false,
     renderer: renderPaymentDate,
-    orderable: false,
+    title: 'installment.payment_date',
   },
   {
-    title: 'installment.total',
     accessor: ['amount'],
+    aggregationRenderer: currencyFormatter,
+    aggregator: sumParameters,
+    align: 'end',
+    orderable: false,
     renderer: ({ amount }) => currencyFormatter(amount),
-    orderable: false,
+    title: 'installment.total',
   },
   {
-    title: 'installment.mdr',
     accessor: ['costs', 'mdr'],
+    aggregationRenderer: currencyFormatter,
+    aggregator: sumParameters,
+    align: 'end',
+    orderable: false,
     renderer: ({ costs }) => currencyFormatter(costs.mdr),
-    orderable: false,
+    title: 'installment.mdr',
   },
   {
-    title: 'installment.anticipation',
     accessor: ['costs', 'anticipation'],
-    renderer: ({ costs }) => currencyFormatter(costs.anticipation),
+    aggregationRenderer: currencyFormatter,
+    aggregator: sumParameters,
+    align: 'end',
     orderable: false,
+    renderer: ({ costs }) => currencyFormatter(costs.anticipation),
+    title: 'installment.anticipation',
   },
   {
-    title: 'installment.chargeback_refund',
     accessor: ['costs', 'chargeback'],
+    aggregationRenderer: currencyFormatter,
+    aggregator: sumParameters,
+    align: 'end',
+    orderable: false,
     renderer: ({ costs }) => (
       costs.chargeback ?
         currencyFormatter(costs.chargeback) :
         currencyFormatter(costs.refund)
     ),
-    orderable: false,
+    title: 'installment.chargeback_refund',
   },
   {
-    title: 'installment.net_amount',
     accessor: ['net_amount'],
-    renderer: ({ costs }) => currencyFormatter(costs.net_amount),
+    aggregationRenderer: currencyFormatter,
+    aggregator: sumParameters,
+    align: 'end',
     orderable: false,
+    renderer: ({ costs }) => currencyFormatter(costs.net_amount),
+    title: 'installment.net_amount',
   },
 ]
 

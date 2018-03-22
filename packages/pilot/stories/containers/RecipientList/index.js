@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import recipients from '../../../src/containers/RecipientList/recipientListMock'
+import recipientsMock from '../../../src/containers/RecipientList/recipientListMock'
 import RecipientList from '../../../src/containers/RecipientList'
 import installmentColumns from '../../../src/components/RecipientSection/installmentTableColumns'
 import getColumnFormatter from '../../../src/formatters/columnTranslator'
@@ -16,7 +16,7 @@ class RecipientListState extends PureComponent {
     this.state = {
       columns: formatColumns(installmentColumns),
       collapsed: true,
-      recipients,
+      recipients: recipientsMock,
     }
   }
 
