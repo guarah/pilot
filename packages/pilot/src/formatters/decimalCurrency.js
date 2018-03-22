@@ -25,10 +25,7 @@ const decimal = (value) => {
     return null
   }
 
-  const x = format(value)
-  console.log(x)
-
-  return x
+  return format(value)
 }
 
 export default decimal
