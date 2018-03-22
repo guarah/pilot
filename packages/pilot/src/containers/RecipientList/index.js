@@ -125,7 +125,9 @@ class RecipientList extends Component {
           </div>
         </CardContent>
         <CardContent>
-          {this.renderRecipientList()}
+          <div className={style.recipients}>
+            {this.renderRecipientList()}
+          </div>
         </CardContent>
       </Card>
     )
