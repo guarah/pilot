@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 const recipient = {
-  amount: 400000000, // SplitRule
+  amount: 4000000123, // SplitRule
   installments: [
     {
       amount: 400000000,

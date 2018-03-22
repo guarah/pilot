@@ -7,16 +7,16 @@ import {
 import Intl from 'intl'
 import 'intl/locale-data/jsonp/pt'
 
-const formatter = new Intl.NumberFormat({
-  style: 'decimal',
-})
-
-const fixToTwo = number => number.toFixed(2)
+const formatter = new Intl.NumberFormat(
+  'pt-BR',
+  {
+    minimumFractionDigits: 2,
+  }
+)
 
 const format = pipe(
   Number,
   divide(__, 100),
-  fixToTwo,
   formatter.format
 )
 
@@ -25,7 +25,10 @@ const decimal = (value) => {
     return null
   }
 
-  return format(Number(value) / 100)
+  const x = format(value)
+  console.log(x)
+
+  return x
 }
 
 export default decimal
