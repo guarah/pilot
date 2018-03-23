@@ -85,6 +85,7 @@ const expectedResult = {
             number: 1,
             original_payment_date: null,
             payment_date: '2018-04-16T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -97,6 +98,7 @@ const expectedResult = {
             number: 2,
             original_payment_date: null,
             payment_date: '2018-05-15T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -109,6 +111,7 @@ const expectedResult = {
             number: 3,
             original_payment_date: null,
             payment_date: '2018-06-13T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -121,6 +124,7 @@ const expectedResult = {
             number: 4,
             original_payment_date: null,
             payment_date: '2018-07-13T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -133,6 +137,7 @@ const expectedResult = {
             number: 5,
             original_payment_date: null,
             payment_date: '2018-08-14T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -145,6 +150,7 @@ const expectedResult = {
             number: 6,
             original_payment_date: null,
             payment_date: '2018-09-11T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -157,6 +163,7 @@ const expectedResult = {
             number: 7,
             original_payment_date: null,
             payment_date: '2018-10-11T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -169,6 +176,7 @@ const expectedResult = {
             number: 8,
             original_payment_date: null,
             payment_date: '2018-11-12T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -181,6 +189,7 @@ const expectedResult = {
             number: 9,
             original_payment_date: null,
             payment_date: '2018-12-11T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -193,6 +202,7 @@ const expectedResult = {
             number: 10,
             original_payment_date: null,
             payment_date: '2019-01-09T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -205,6 +215,7 @@ const expectedResult = {
             number: 11,
             original_payment_date: null,
             payment_date: '2019-02-08T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 32839084,
@@ -217,6 +228,7 @@ const expectedResult = {
             number: 12,
             original_payment_date: null,
             payment_date: '2019-03-12T03:00:00.000Z',
+            status: 'waiting_funds',
           },
         ],
         liabilities: [
@@ -224,6 +236,7 @@ const expectedResult = {
         ],
         name: 'JONATHAN',
         net_amount: 354662099,
+        status: 'waiting_funds',
       },
       {
         amount: -394069000,
@@ -239,6 +252,7 @@ const expectedResult = {
             number: 1,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -251,6 +265,7 @@ const expectedResult = {
             number: 2,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -263,6 +278,7 @@ const expectedResult = {
             number: 3,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -275,6 +291,7 @@ const expectedResult = {
             number: 4,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -287,6 +304,7 @@ const expectedResult = {
             number: 5,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -299,6 +317,7 @@ const expectedResult = {
             number: 6,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -311,6 +330,7 @@ const expectedResult = {
             number: 7,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -323,6 +343,7 @@ const expectedResult = {
             number: 8,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -335,6 +356,7 @@ const expectedResult = {
             number: 9,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -347,6 +369,7 @@ const expectedResult = {
             number: 10,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -359,6 +382,7 @@ const expectedResult = {
             number: 11,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
           {
             amount: -32839084,
@@ -371,6 +395,7 @@ const expectedResult = {
             number: 12,
             original_payment_date: null,
             payment_date: '2018-03-14T03:00:00.000Z',
+            status: 'paid',
           },
         ],
         liabilities: [
@@ -378,6 +403,7 @@ const expectedResult = {
         ],
         name: 'JONATHAN',
         net_amount: -354662100,
+        status: 'paid',
       },
       {
         amount: 295551750,
@@ -393,6 +419,7 @@ const expectedResult = {
             number: 1,
             original_payment_date: null,
             payment_date: '2018-04-16T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -405,6 +432,7 @@ const expectedResult = {
             number: 2,
             original_payment_date: null,
             payment_date: '2018-05-15T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -417,6 +445,7 @@ const expectedResult = {
             number: 3,
             original_payment_date: null,
             payment_date: '2018-06-13T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -429,6 +458,7 @@ const expectedResult = {
             number: 4,
             original_payment_date: null,
             payment_date: '2018-07-13T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -441,6 +471,7 @@ const expectedResult = {
             number: 5,
             original_payment_date: null,
             payment_date: '2018-08-14T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -453,6 +484,7 @@ const expectedResult = {
             number: 6,
             original_payment_date: null,
             payment_date: '2018-09-11T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -465,6 +497,7 @@ const expectedResult = {
             number: 7,
             original_payment_date: null,
             payment_date: '2018-10-11T03:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -477,6 +510,7 @@ const expectedResult = {
             number: 8,
             original_payment_date: null,
             payment_date: '2018-11-12T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -489,6 +523,7 @@ const expectedResult = {
             number: 9,
             original_payment_date: null,
             payment_date: '2018-12-11T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -501,6 +536,7 @@ const expectedResult = {
             number: 10,
             original_payment_date: null,
             payment_date: '2019-01-09T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -513,6 +549,7 @@ const expectedResult = {
             number: 11,
             original_payment_date: null,
             payment_date: '2019-02-08T02:00:00.000Z',
+            status: 'waiting_funds',
           },
           {
             amount: 24629313,
@@ -525,11 +562,13 @@ const expectedResult = {
             number: 12,
             original_payment_date: null,
             payment_date: '2019-03-12T03:00:00.000Z',
+            status: 'waiting_funds',
           },
         ],
         liabilities: [],
         name: 'Marceneiro',
         net_amount: 295551750,
+        status: 'waiting_funds',
       },
     ],
     soft_descriptor: null,

@@ -1,9 +1,9 @@
 import buildResult from './result'
-import mock from './mock.json'
-import expectedResult from './expectedResultMock'
+import fromRequest from './mocks/fromRequests.json'
+import expectedResult from './mocks/expectedResultMock'
 
 describe('Transaction details', () => {
   it('should work when transaction, gatewayOperations, chargebackOperations, payables, company and status are returned', () => {
-    expect(buildResult(mock)).toEqual(expectedResult)
+    expect(buildResult(fromRequest)).toEqual(expectedResult)
   })
 })

@@ -12,6 +12,7 @@ import {
   isEmpty,
   isNil,
   juxt,
+  last,
   map,
   mergeAll,
   mergeDeepWithKey,
@@ -33,6 +34,7 @@ import {
   values,
   when,
 } from 'ramda'
+
 import moment from 'moment'
 
 import { transactionSpec } from '../shared'
@@ -120,6 +122,12 @@ const mapRecipients = map(applySpec({
     ]),
     apply(subtract)
   ),
+  status: pipe(
+    prop('installments'),
+    sortByDateCreated,
+    last,
+    prop('status')
+  ),
   liabilities: pipe(
     juxt([
       ifElse(
@@ -139,6 +147,7 @@ const mapRecipients = map(applySpec({
     prop('installments'),
     map(applySpec({
       number: prop('installment'),
+      status: prop('status'),
       payment_date: prop('payment_date'),
       original_payment_date: prop('original_payment_date'),
       date_created: prop('date_created'),
