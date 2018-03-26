@@ -135,6 +135,11 @@ storiesOf('Pages', module)
   ))
   .add('User Settings', () => (
     <UserSettings
+<<<<<<< HEAD:packages/pilot/stories/pages/Landing/index.js
 
+=======
+      handlePersonalFormSubmit={action('personal form submit')}
+      handleAddressFormSubmit={action('address form submit')}
+>>>>>>> pages: add settings page:packages/pilot/stories/Landing/index.js
     />
   ))

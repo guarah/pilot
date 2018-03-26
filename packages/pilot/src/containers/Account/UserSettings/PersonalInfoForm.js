@@ -26,7 +26,6 @@ const PersonalInfoForm = ({
       password: '',
     }}
     onSubmit={onSubmit}
-    onCancel={onCancel}
   >
     <CardContent>
       <Grid>
@@ -95,9 +94,10 @@ const PersonalInfoForm = ({
     </CardContent>
     <CardActions>
       <Button
-        type="submit"
+        type="reset"
         size="large"
         fill="outline"
+        onClick={onCancel}
       >
         {t('account.personalinfo.cancel')}
       </Button>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   Grid,
   Row,
@@ -34,6 +35,12 @@ class UserSettings extends Component {
     }
   }
   render () {
+    const {
+      t,
+      handlePersonalFormSubmit,
+      handleAddressFormSubmit,
+    } = this.props
+
     return (
       <Grid>
         <Row>
@@ -60,7 +67,12 @@ class UserSettings extends Component {
                     }
                   />
                   {
-                    !this.state.personalInfoSectionCollapsed && <PersonalInfoForm />
+                    !this.state.personalInfoSectionCollapsed &&
+                      <PersonalInfoForm
+                        t={t}
+                        onSubmit={handlePersonalFormSubmit}
+                        onCancel={() => console.log('canceled')}
+                      />
                   }
                 </CardSection>
 
@@ -78,7 +90,11 @@ class UserSettings extends Component {
                     }
                   />
                   {
-                    !this.state.addressInfoSectionCollapsed && <AddressInfoForm />
+                    !this.state.addressInfoSectionCollapsed &&
+                      <AddressInfoForm
+                        onSubmit={handleAddressFormSubmit}
+                        onCancel={() => console.log('canceled')}
+                      />
                   }
                 </CardSection>
               </CardContent>
@@ -107,6 +123,16 @@ class UserSettings extends Component {
       </Grid>
     )
   }
+}
+
+UserSettings.propTypes = {
+  t: PropTypes.func,
+  handlePersonalFormSubmit: PropTypes.func.isRequired,
+  handleAddressFormSubmit: PropTypes.func.isRequired,
+}
+
+UserSettings.defaultProps = {
+  t: t => t,
 }
 
 export default UserSettings

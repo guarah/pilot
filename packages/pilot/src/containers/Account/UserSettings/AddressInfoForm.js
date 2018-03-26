@@ -31,6 +31,7 @@ const options = [
 
 const AddressInfoForm = ({
   onSubmit,
+  onCancel,
   t,
 }) => (
   <Form
@@ -110,11 +111,12 @@ const AddressInfoForm = ({
         type="submit"
         size="large"
         fill="outline"
+        onClick={onCancel}
       >
         {t('CANCELAR')}
       </Button>
       <Button
-        type="cancel"
+        type="submit"
         size="large"
         fill="gradient"
       >
@@ -126,6 +128,7 @@ const AddressInfoForm = ({
 
 AddressInfoForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
   t: PropTypes.func,
 }
 
