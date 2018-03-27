@@ -3,6 +3,7 @@ import {
   TabBar,
   TabItem,
 } from 'former-kit'
+import GeneralInfoTab from './GeneralInfoTab'
 
 class CompanySettings extends Component {
   constructor (props) {
@@ -23,7 +24,7 @@ class CompanySettings extends Component {
         onTabChange={this.changeTab}
       >
         <TabItem text="Geral">
-          <h2>Geral</h2>
+          <GeneralInfoTab />
         </TabItem>
         <TabItem text="Produtos" >
           <h2>Produtos</h2>

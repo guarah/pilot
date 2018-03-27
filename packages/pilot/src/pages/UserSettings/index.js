@@ -7,7 +7,7 @@ import {
 import { translate } from 'react-i18next'
 
 
-import UserSettings from '../../containers/Account/UserSettings'
+import UserSettings from '../../containers/Settings/User'
 
 const enhanced = compose(
   withRouter,
@@ -18,25 +18,11 @@ class UserSettingsPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = null
-
-    this.handleAddressFormSubmit.bind(this)
-    this.handlePersonalFormSubmit.bind(this)
-  }
-
-  handlePersonalFormSubmit (data) {
-
-  }
-
-  handleAddressFormSubmit (data) {
-
   }
 
   render () {
     return (
-      <UserSettings 
-        handlePersonalFormSubmit={this.handlePersonalFormSubmit}
-        handleAddressFormSubmit={this.handleAddressFormSubmit}
-      />
+      <UserSettings />
     )
   }
 }

@@ -132,6 +132,7 @@ storiesOf('Pages', module)
       }
       secondaryContent={unregisteredPresentation}
     />
+<<<<<<< HEAD:packages/pilot/stories/pages/Landing/index.js
   ))
   .add('User Settings', () => (
     <UserSettings
@@ -143,3 +144,6 @@ storiesOf('Pages', module)
 >>>>>>> pages: add settings page:packages/pilot/stories/Landing/index.js
     />
   ))
+=======
+  ))
+>>>>>>> chore: refactor container and page structure:packages/pilot/stories/Landing/index.js
