@@ -11,17 +11,14 @@ import {
   CardSectionDoubleLineTitle,
 } from 'former-kit'
 import IconInfo from 'emblematic-icons/svg/Info32.svg'
-import PersonalInfoForm from './PersonalInfoForm'
-import AddressInfoForm from './AddressInfoForm'
+import PasswordRedefinitionForm from './passwordRedefinitionForm'
 
 
 class UserSettings extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      companyInfoSectionCollapsed: false,
-      personalInfoSectionCollapsed: false,
-      addressInfoSectionCollapsed: false,
+      passwordInfoSectionCollapsed: false,
     }
   }
 
@@ -37,8 +34,7 @@ class UserSettings extends Component {
   render () {
     const {
       t,
-      handlePersonalFormSubmit,
-      handleAddressFormSubmit,
+      handlePasswordFormSubmit,
     } = this.props
 
     return (
@@ -52,69 +48,28 @@ class UserSettings extends Component {
           >
             <Card>
               <CardTitle
-                title="Dados Pessoais"
-              />
-
-              <CardContent>
-                <CardSection>
-                  <CardSectionDoubleLineTitle
-                    title="Informacoes da empresa"
-                    icon={<IconInfo height={16} width={16} />}
-                    subtitle="Verifique ou edite informacoes de sua empresa"
-                    collapsed={this.state.personalInfoSectionCollapsed}
-                    onClick={
-                      this.handleSectionTitleClick('personalInfoSectionCollapsed')
-                    }
-                  />
-                  {
-                    !this.state.personalInfoSectionCollapsed &&
-                      <PersonalInfoForm
-                        t={t}
-                        onSubmit={handlePersonalFormSubmit}
-                        onCancel={() => console.log('canceled')}
-                      />
-                  }
-                </CardSection>
-
-              </CardContent>
-
-              <CardContent>
-                <CardSection>
-                  <CardSectionDoubleLineTitle
-                    title="Endereço residencial"
-                    icon={<IconInfo height={16} width={16} />}
-                    subtitle="Verifique ou edite informações no Pagar.me"
-                    collapsed={this.state.addressInfoSectionCollapsed}
-                    onClick={
-                      this.handleSectionTitleClick('addressInfoSectionCollapsed')
-                    }
-                  />
-                  {
-                    !this.state.addressInfoSectionCollapsed &&
-                      <AddressInfoForm
-                        onSubmit={handleAddressFormSubmit}
-                        onCancel={() => console.log('canceled')}
-                      />
-                  }
-                </CardSection>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardTitle
                 title="Acesso"
               />
 
               <CardContent>
-                <CardSection
-                  collapsed={this.state.companySectionCollapsed}
-                  title="Alterar senha"
-                  subtitle="Recomendamos que use uma senha forte e
-                diferente das demais que costuma utilizar"
-                  onTitleClick={this.handleSectionTitleClick('companySectionCollapsed')}
-                  icon={<IconInfo height={16} width={16} />}
-                >
-                  {'dasdadas'}
+                <CardSection>
+                  <CardSectionDoubleLineTitle
+                    title="Alterar Senha"
+                    icon={<IconInfo height={16} width={16} />}
+                    subtitle="Configuracoes gerais de acessibilidade"
+                    collapsed={this.state.passwordInfoSectionCollapsed}
+                    onClick={
+                      this.handleSectionTitleClick('passwordInfoSectionCollapsed')
+                    }
+                  />
+                  {
+                    !this.state.passwordInfoSectionCollapsed &&
+                      <PasswordRedefinitionForm
+                        onSubmit={handlePasswordFormSubmit}
+                        onCancel={() => console.log('canceled')}
+                        t={t}
+                      />
+                  }
                 </CardSection>
               </CardContent>
             </Card>
@@ -127,8 +82,7 @@ class UserSettings extends Component {
 
 UserSettings.propTypes = {
   t: PropTypes.func,
-  handlePersonalFormSubmit: PropTypes.func.isRequired,
-  handleAddressFormSubmit: PropTypes.func.isRequired,
+  handlePasswordFormSubmit: PropTypes.func.isRequired,
 }
 
 UserSettings.defaultProps = {
