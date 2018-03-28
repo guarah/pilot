@@ -11,8 +11,8 @@ import cockpit from 'cockpit'
 import UserSettings from '../../containers/Settings/User'
 
 const mapStateToProps = ({
-  account: { client },
-}) => ({ client })
+  account: { client, user },
+}) => ({ client, user })
 
 
 const enhanced = compose(
@@ -29,11 +29,16 @@ class UserSettingsPage extends React.Component {
     this.handleRedefinePassword = this.handleRedefinePassword.bind(this)
   }
 
-  handleRedefinePassword (data) {
-    console.log(data)
-    console.log(this.client)
+  handleRedefinePassword ({ 
+    current_password, new_password }) {
+    const { id } = this.props.user
+
     this.client
-      .user.updatePassword(data)
+      .user.updatePassword({
+        current_password,
+        new_password,
+        id,
+      })
       .then(response => console.dir(response))
       .catch(error => console.dir(error))
   }
@@ -54,6 +59,11 @@ class UserSettingsPage extends React.Component {
 
 UserSettingsPage.propTypes = {
   client: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    id: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
   t: PropTypes.func.isRequired,
 }
 

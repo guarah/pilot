@@ -82,7 +82,7 @@ class UserSettings extends Component {
                     title={t('settings.user.address.card.title')}
                     icon={<IconInfo height={16} width={16} />}
                     subtitle={t('settings.user.address.card.subtitle')}
-                    collapsed={this.state.addressInfoSectionCollapsed}
+                    collapsed={this.state.passwordInfoSectionCollapsed}
                     onClick={
                       this.handleSectionTitleClick('passwordInfoSectionCollapsed')
                     }

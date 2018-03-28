@@ -1,5 +1,5 @@
-import redefinePassword from './redefinePassword'
+import updatePassword from './updatePassword'
 
 export default {
-  redefinePassword,
+  updatePassword,
 }

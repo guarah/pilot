@@ -32,23 +32,23 @@ const PasswordRedefinitionForm = ({
             <FormInput
               label={t('account.passwordform.currentpassword')}
               name="current_password"
-              type="text"
+              type="password"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
               label={t('account.passwordform.currentpassword')}
-              name="current_password"
-              type="text"
+              name="new_password"
+              type="password"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
               label={t('account.passwordform.new_password')}
-              name="new_password"
-              type="text"
+              name="new_password2"
+              type="password"
               className={styles.formInput}
             />
           </Col>
