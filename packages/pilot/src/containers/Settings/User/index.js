@@ -10,9 +10,10 @@ import {
   CardContent,
   CardSectionDoubleLineTitle,
 } from 'former-kit'
+
 import IconInfo from 'emblematic-icons/svg/Info32.svg'
 import PasswordRedefinitionForm from './passwordRedefinitionForm'
-
+import PersonalInfoForm from './PersonalInfoForm'
 
 class UserSettings extends Component {
   constructor (props) {
@@ -35,6 +36,7 @@ class UserSettings extends Component {
     const {
       t,
       handlePasswordFormSubmit,
+      handlePersonalFormSubmit,
     } = this.props
 
     return (
@@ -48,22 +50,12 @@ class UserSettings extends Component {
           >
             <Card>
               <CardTitle
-<<<<<<< Updated upstream
-                title="Acesso"
-=======
                 title={t('settings.user.card.header')}
->>>>>>> Stashed changes
               />
 
               <CardContent>
                 <CardSection>
                   <CardSectionDoubleLineTitle
-<<<<<<< Updated upstream
-                    title="Alterar Senha"
-                    icon={<IconInfo height={16} width={16} />}
-                    subtitle="Configuracoes gerais de acessibilidade"
-                    collapsed={this.state.passwordInfoSectionCollapsed}
-=======
                     title={t('settings.user.personal.card.title')}
                     icon={<IconInfo height={16} width={16} />}
                     subtitle={t('settings.user.personal.card.subtitle')}
@@ -91,7 +83,6 @@ class UserSettings extends Component {
                     icon={<IconInfo height={16} width={16} />}
                     subtitle={t('settings.user.address.card.subtitle')}
                     collapsed={this.state.addressInfoSectionCollapsed}
->>>>>>> Stashed changes
                     onClick={
                       this.handleSectionTitleClick('passwordInfoSectionCollapsed')
                     }
@@ -117,6 +108,7 @@ class UserSettings extends Component {
 UserSettings.propTypes = {
   t: PropTypes.func,
   handlePasswordFormSubmit: PropTypes.func.isRequired,
+  handlePersonalFormSubmit: PropTypes.func.isRequired,
 }
 
 UserSettings.defaultProps = {
