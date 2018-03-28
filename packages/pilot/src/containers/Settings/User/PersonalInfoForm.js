@@ -32,7 +32,7 @@ const PersonalInfoForm = ({
         <Row>
           <Col palm={12} tablet={12} desk={4} tv={4}>
             <FormInput
-              label={t('account.personalinfo.name')}
+              label={t('settings.user.personal.name')}
               name="name"
               type="text"
               className={styles.formInput}
@@ -40,16 +40,16 @@ const PersonalInfoForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={4} tv={4}>
             <FormInput
-              label={t('account.personalinfo.email')}
-              name="company"
+              label={t('settings.user.personal.email')}
+              name="email"
               type="text"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={4} tv={4}>
             <FormInput
-              label={t('account.personalinfo.mothername')}
-              name="email"
+              label={t('settings.user.personal.mothername')}
+              name="mothername"
               type="text"
               className={styles.formInput}
             />
@@ -59,32 +59,32 @@ const PersonalInfoForm = ({
         <Row>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('sign_up.company')}
-              name="company"
+              label={t('settings.user.personal.document')}
+              name="document"
               type="text"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={4} tv={4}>
             <FormInput
-              label={t('account.personalinfo.birthday')}
-              name="name"
+              label={t('settings.user.personal.birthday')}
+              name="birthday"
               type="text"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('account.personalinfo.cpf')}
-              name="company"
+              label={t('settings.user.personal.cpf')}
+              name="cpf"
               type="text"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('account.personalinfo.phone')}
-              name="company"
+              label={t('settings.user.personal.phone')}
+              name="phone"
               type="text"
               className={styles.formInput}
             />
@@ -99,14 +99,14 @@ const PersonalInfoForm = ({
         fill="outline"
         onClick={onCancel}
       >
-        {t('account.personalinfo.cancel')}
+        {t('settings.user.personal.button.cancel')}
       </Button>
       <Button
         type="submit"
         size="large"
         fill="gradient"
       >
-        {t('account.personalinfo.save')}
+        {t('settings.user.personal.button.save')}
       </Button>
     </CardActions>
   </Form>

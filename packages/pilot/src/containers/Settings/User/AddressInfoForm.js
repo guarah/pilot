@@ -48,7 +48,7 @@ const AddressInfoForm = ({
         <Row>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('CEP')}
+              label={t('settings.user.address.cep')}
               name="cep"
               type="text"
               className={styles.formInput}
@@ -56,7 +56,7 @@ const AddressInfoForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={5} tv={5}>
             <FormInput
-              label={t('Rua')}
+              label={t('settings.user.address.street')}
               name="street"
               type="text"
               className={styles.formInput}
@@ -64,7 +64,7 @@ const AddressInfoForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('N°')}
+              label={t('settings.user.address.number')}
               name="number"
               type="number"
               className={styles.formInput}
@@ -72,7 +72,7 @@ const AddressInfoForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
-              label={t('Complemento - opcional')}
+              label={t('settings.user.address.complement')}
               name="complement"
               type="text"
               className={styles.formInput}
@@ -83,16 +83,16 @@ const AddressInfoForm = ({
         <Row>
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormInput
-              label={t('Bairro')}
-              name="name"
+              label={t('settings.user.address.neighborhood')}
+              name="neighborhood"
               type="text"
               className={styles.formInput}
             />
           </Col>
           <Col palm={12} tablet={12} desk={5} tv={5}>
             <FormInput
-              label={t('sign_up.company')}
-              name="company"
+              label={t('settings.user.address.city')}
+              name="city"
               type="text"
               className={styles.formInput}
             />
@@ -100,7 +100,7 @@ const AddressInfoForm = ({
           <Col palm={12} tablet={12} desk={2} tv={2}>
             <FormDropdown
               options={options}
-              name="company"
+              name="state"
             />
           </Col>
         </Row>
@@ -113,14 +113,14 @@ const AddressInfoForm = ({
         fill="outline"
         onClick={onCancel}
       >
-        {t('CANCELAR')}
+        {t('settings.user.address.button.cancel')}
       </Button>
       <Button
         type="submit"
         size="large"
         fill="gradient"
       >
-        {t('SALVAR ALTERAÇÕES')}
+        {t('settings.user.address.button.save')}
       </Button>
     </CardActions>
   </Form>

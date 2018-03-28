@@ -48,16 +48,50 @@ class UserSettings extends Component {
           >
             <Card>
               <CardTitle
+<<<<<<< Updated upstream
                 title="Acesso"
+=======
+                title={t('settings.user.card.header')}
+>>>>>>> Stashed changes
               />
 
               <CardContent>
                 <CardSection>
                   <CardSectionDoubleLineTitle
+<<<<<<< Updated upstream
                     title="Alterar Senha"
                     icon={<IconInfo height={16} width={16} />}
                     subtitle="Configuracoes gerais de acessibilidade"
                     collapsed={this.state.passwordInfoSectionCollapsed}
+=======
+                    title={t('settings.user.personal.card.title')}
+                    icon={<IconInfo height={16} width={16} />}
+                    subtitle={t('settings.user.personal.card.subtitle')}
+                    collapsed={this.state.personalInfoSectionCollapsed}
+                    onClick={
+                      this.handleSectionTitleClick('personalInfoSectionCollapsed')
+                    }
+                  />
+                  {
+                    !this.state.personalInfoSectionCollapsed &&
+                      <PersonalInfoForm
+                        t={t}
+                        onSubmit={handlePersonalFormSubmit}
+                        onCancel={() => console.log('canceled')}
+                      />
+                  }
+                </CardSection>
+
+              </CardContent>
+
+              <CardContent>
+                <CardSection>
+                  <CardSectionDoubleLineTitle
+                    title={t('settings.user.address.card.title')}
+                    icon={<IconInfo height={16} width={16} />}
+                    subtitle={t('settings.user.address.card.subtitle')}
+                    collapsed={this.state.addressInfoSectionCollapsed}
+>>>>>>> Stashed changes
                     onClick={
                       this.handleSectionTitleClick('passwordInfoSectionCollapsed')
                     }
