@@ -29,8 +29,7 @@ class UserSettingsPage extends React.Component {
     this.handleRedefinePassword = this.handleRedefinePassword.bind(this)
   }
 
-  handleRedefinePassword ({ 
-    current_password, new_password }) {
+  handleRedefinePassword ({ current_password, new_password }) {
     const { id } = this.props.user
 
     this.client
