@@ -54,9 +54,9 @@ class UserSettings extends Component {
               <CardContent>
                 <CardSection>
                   <CardSectionDoubleLineTitle
-                    title={t('settings.user.address.card.title')}
+                    title={t('settings.user.access.card.title')}
                     icon={<IconInfo height={16} width={16} />}
-                    subtitle={t('settings.user.address.card.subtitle')}
+                    subtitle={t('settings.user.access.card.subtitle')}
                     collapsed={this.state.passwordInfoSectionCollapsed}
                     onClick={
                       this.handleSectionTitleClick('passwordInfoSectionCollapsed')

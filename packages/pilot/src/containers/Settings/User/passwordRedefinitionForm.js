@@ -30,7 +30,7 @@ const PasswordRedefinitionForm = ({
         <Row>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
-              label={t('account.passwordform.currentpassword')}
+              label={t('settings.user.access.currentPassword')}
               name="current_password"
               type="password"
               className={styles.formInput}
@@ -38,7 +38,7 @@ const PasswordRedefinitionForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
-              label={t('account.passwordform.currentpassword')}
+              label={t('settings.user.access.newPassword')}
               name="new_password"
               type="password"
               className={styles.formInput}
@@ -46,7 +46,7 @@ const PasswordRedefinitionForm = ({
           </Col>
           <Col palm={12} tablet={12} desk={3} tv={3}>
             <FormInput
-              label={t('account.passwordform.new_password')}
+              label={t('settings.user.access.matchNewPassword')}
               name="new_password2"
               type="password"
               className={styles.formInput}
@@ -62,14 +62,14 @@ const PasswordRedefinitionForm = ({
         fill="outline"
         onClick={onCancel}
       >
-        {t('account.passwordform.cancel')}
+        {t('settings.user.access.button.cancel')}
       </Button>
       <Button
         type="submit"
         size="large"
         fill="gradient"
       >
-        {t('account.passwordform.save')}
+        {t('settings.user.access.button.save')}
       </Button>
     </CardActions>
   </Form>
