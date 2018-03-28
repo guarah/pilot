@@ -13,7 +13,6 @@ import {
 
 import IconInfo from 'emblematic-icons/svg/Info32.svg'
 import PasswordRedefinitionForm from './passwordRedefinitionForm'
-import PersonalInfoForm from './PersonalInfoForm'
 
 class UserSettings extends Component {
   constructor (props) {
@@ -36,7 +35,6 @@ class UserSettings extends Component {
     const {
       t,
       handlePasswordFormSubmit,
-      handlePersonalFormSubmit,
     } = this.props
 
     return (
@@ -52,29 +50,6 @@ class UserSettings extends Component {
               <CardTitle
                 title={t('settings.user.card.header')}
               />
-
-              <CardContent>
-                <CardSection>
-                  <CardSectionDoubleLineTitle
-                    title={t('settings.user.personal.card.title')}
-                    icon={<IconInfo height={16} width={16} />}
-                    subtitle={t('settings.user.personal.card.subtitle')}
-                    collapsed={this.state.personalInfoSectionCollapsed}
-                    onClick={
-                      this.handleSectionTitleClick('personalInfoSectionCollapsed')
-                    }
-                  />
-                  {
-                    !this.state.personalInfoSectionCollapsed &&
-                      <PersonalInfoForm
-                        t={t}
-                        onSubmit={handlePersonalFormSubmit}
-                        onCancel={() => console.log('canceled')}
-                      />
-                  }
-                </CardSection>
-
-              </CardContent>
 
               <CardContent>
                 <CardSection>
@@ -108,7 +83,6 @@ class UserSettings extends Component {
 UserSettings.propTypes = {
   t: PropTypes.func,
   handlePasswordFormSubmit: PropTypes.func.isRequired,
-  handlePersonalFormSubmit: PropTypes.func.isRequired,
 }
 
 UserSettings.defaultProps = {
