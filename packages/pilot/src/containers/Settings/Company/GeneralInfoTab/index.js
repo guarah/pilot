@@ -18,6 +18,7 @@ const GeneralInfoTab = ({
   </Fragment>
 )
 
+
 GeneralInfoTab.propTypes = {
   t: PropTypes.func.isRequired,
   pricing: PropTypes.shape({

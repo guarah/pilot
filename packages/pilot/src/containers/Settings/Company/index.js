@@ -70,6 +70,38 @@ class CompanySettings extends Component {
                 </TabBar>
               </CardContent>
             </Card>
+
+            <TabBar
+              variant="just-text"
+              selected={this.state.selected}
+              onTabChange={this.changeTab}
+            >
+              <TabItem text={t('settings.tab.general')}>
+                <GeneralInfoTab
+                  t={t}
+                />
+              </TabItem>
+              <TabItem text={t('settings.tab.product')}>
+                <GeneralInfoTab
+                  t={t}
+                />
+              </TabItem>
+              <TabItem text={t('settings.tab.team')}>
+                <GeneralInfoTab
+                  t={t}
+                />
+              </TabItem>
+              <TabItem text={t('settings.tab.personalization')}>
+                <GeneralInfoTab
+                  t={t}
+                />
+              </TabItem>
+              <TabItem text={t('settings.tab.register')}>
+                <GeneralInfoTab
+                  t={t}
+                />
+              </TabItem>
+            </TabBar>
           </Col>
         </Row>
       </Grid>
