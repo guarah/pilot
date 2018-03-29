@@ -7,25 +7,76 @@ import Sidebar from '../../containers/Sidebar'
 
 import routes from './routes'
 
-import Logo from '../logo.svg'
+class SidebarContainer extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      collapsed: false,
+    }
 
-const SidebarState = ({
-  location: { pathname },
-  history,
-  t,
-}) => (
-  <Sidebar
-    logo={Logo}
-    links={Object.values(routes).filter(r => r.component).map(route => ({
-        ...route,
-        title: t(route.title),
-    }))}
-    onLinkClick={history.push}
-    pathName={pathname}
-  />
-)
+    this.handleToggleSidebar = this.handleToggleSidebar.bind(this)
+  }
 
-SidebarState.propTypes = {
+  handleToggleSidebar () {
+    const { collapsed } = this.state
+    this.setState({ collapsed: !collapsed })
+  }
+
+  renderSubMenu (parentPath, subRoute) {
+    const { collapsed } = this.state
+    const { location: { pathname }, history } = this.props
+
+    return (subRoute && subRoute.length > 0) ? subRoute.map(({ title, path }) => (
+      <SidebarLink
+        key={`${parentPath}${path}`}
+        title={title}
+        active={`${parentPath}${path}` === pathname}
+        collapsed={collapsed}
+        onClick={() => history.push(`${parentPath}${path}`)}
+      />
+    )) : null
+  }
+
+  render () {
+    const { collapsed } = this.state
+    const { location: { pathname }, history } = this.props
+
+    return (
+      <Sidebar collapsed={collapsed}>
+        <SidebarHeader>
+          {!collapsed &&
+            <h1>FormerKit</h1>
+          }
+          <button onClick={this.handleToggleSidebar}>
+            <Menu32 width={16} height={16} />
+          </button>
+        </SidebarHeader>
+
+        <SidebarLinks>
+          {Object.values(routes).map(({
+            title,
+            path,
+            icon: Icon,
+            subRoute,
+          }) => (
+            <SidebarLink
+              key={path}
+              title={title}
+              active={path === pathname}
+              icon={<Icon width={16} height={16} />}
+              collapsed={collapsed}
+              onClick={() => history.push(path)}
+            >
+              {this.renderSubMenu(path, subRoute)}
+            </SidebarLink>
+          ))}
+        </SidebarLinks>
+      </Sidebar>
+    )
+  }
+}
+
+SidebarContainer.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }).isRequired,

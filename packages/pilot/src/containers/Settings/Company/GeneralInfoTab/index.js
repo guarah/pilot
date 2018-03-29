@@ -1,44 +1,49 @@
-import React from 'react'
-import {
-  Grid,
-  Row,
-  Col,
-  Card,
-  CardTitle,
-  CardSection,
-  CardContent,
-  CardSectionDoubleLineTitle,
-} from 'former-kit'
-import IconPercent from 'emblematic-icons/svg/Percent32.svg'
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import Pricing from './Pricing'
+import ApiKey from './ApiKey'
 
-const GeneralInfoTab = () => (
-  <Grid>
-    <Row>
-      <Col
-        palm={12}
-        tablet={12}
-        desk={12}
-        tv={12}
-      >
-        <Card>
-          <CardTitle />
-          <CardContent>
-            <CardSection>
-              <CardSectionDoubleLineTitle
-                title="Taxa de Servicos"
-                icon={<IconPercent height={16} width={16} />}
-                subtitle="Taxas e servicos negociados durante a ativacao da sua conta."
-                collapsed={false}
-                // onClick={
-                //   this.handleSectionTitleClick('personalInfoSectionCollapsed')
-                // }
-              />
-            </CardSection>
-          </CardContent>
-        </Card>
-      </Col>
-    </Row>
-  </Grid>
+const GeneralInfoTab = ({
+  t,
+  pricing,
+}) => (
+  <Fragment>
+    <Pricing
+      t={t}
+      pricing={pricing}
+    />
+    <ApiKey
+      t={t}
+    />
+  </Fragment>
 )
+
+GeneralInfoTab.propTypes = {
+  t: PropTypes.func.isRequired,
+  pricing: PropTypes.shape({
+    gateway: PropTypes.shape({
+      fix_cost: PropTypes.shape({
+        credit_card: PropTypes.number,
+        debit_card: PropTypes.number,
+        boleto: PropTypes.number,
+      }),
+      percent: PropTypes.shape({
+        credit_card: PropTypes.number,
+        debit_card: PropTypes.number,
+        boleto: PropTypes.number,
+      }),
+    }),
+    psp: PropTypes.shape({
+      mdrs: PropTypes.number,
+      antecipation: PropTypes.number,
+    }),
+    autifraud: PropTypes.number,
+    transfer: PropTypes.shape({
+      credito_em_conta: PropTypes.number,
+      ted: PropTypes.number,
+      doc: PropTypes.number,
+    }),
+  }).isRequired,
+}
 
 export default GeneralInfoTab

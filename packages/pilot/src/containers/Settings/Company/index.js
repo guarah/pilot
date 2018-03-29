@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
+  Grid,
+  Row,
+  Col,
+  Card,
+  CardContent,
   TabBar,
   TabItem,
 } from 'former-kit'
+
 import GeneralInfoTab from './GeneralInfoTab'
+import ProductInfoTab from './ProductInfoTab'
+import TeamInfoTab from './TeamInfoTab'
+import RegisterInfoTab from './RegisterInfoTab'
 
 class CompanySettings extends Component {
   constructor (props) {
@@ -17,27 +27,62 @@ class CompanySettings extends Component {
   }
 
   render () {
+    const {
+      t,
+    } = this.props
+
     return (
-      <TabBar
-        variant="just-text"
-        selected={this.state.selected}
-        onTabChange={this.changeTab}
-      >
-        <TabItem text="Geral">
-          <GeneralInfoTab />
-        </TabItem>
-        <TabItem text="Produtos" >
-          <h2>Produtos</h2>
-        </TabItem>
-        <TabItem text="Personalização">
-          <h2>Personalizacao</h2>
-        </TabItem>
-        <TabItem text="Cadastro">
-          <h2>Cadastro</h2>
-        </TabItem>
-      </TabBar>
+      <Grid>
+        <Row>
+          <Col
+            palm={12}
+            tablet={12}
+            desk={12}
+            tv={12}
+          >
+            <Card>
+              <CardContent>
+                <TabBar
+                  variant="just-text"
+                  selected={this.state.selected}
+                  onTabChange={this.changeTab}
+                >
+                  <TabItem text={t('settings.tab.general')}>
+                    <GeneralInfoTab
+                      t={t}
+                    />
+                  </TabItem>
+                  <TabItem text={t('settings.tab.product')}>
+                    <ProductInfoTab
+                      t={t}
+                    />
+                  </TabItem>
+                  <TabItem text={t('settings.tab.team')}>
+                    <TeamInfoTab
+                      t={t}
+                    />
+                  </TabItem>
+                  <TabItem text={t('settings.tab.register')}>
+                    <RegisterInfoTab
+                      t={t}
+                    />
+                  </TabItem>
+                </TabBar>
+              </CardContent>
+            </Card>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
+}
+
+CompanySettings.propTypes = {
+  t: PropTypes.func,
+}
+
+CompanySettings.defaultProps = {
+  t: t => t,
 }
 
 export default CompanySettings

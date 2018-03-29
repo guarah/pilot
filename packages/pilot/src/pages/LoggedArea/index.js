@@ -15,24 +15,38 @@ import Header from './Header'
 
 import routes from './routes'
 
-const enhanced = compose(
-  translate(),
-  withRouter
+const subRoutes = (parentPath, subRoute) => (
+  <Switch>
+    {subRoute.map(({ path, component }) => (
+      <Route
+        component={component}
+        key={`${parentPath}${path}`}
+        path={`${parentPath}${path}`}
+      />
+    ))}
+  </Switch>
 )
 
-const LoggedArea = ({ t }) => (
+const LoggedArea = () => (
   <Layout
     sidebar={<Sidebar t={t} />}
     header={<Header t={t} />}
   >
     <Switch>
-      {Object.values(routes).map(({ component, path }) => (
-        <Route
-          key={path}
-          path={path}
-          component={component}
-        />
-      ))}
+      {Object.values(routes).map(({
+          component,
+          path,
+          subRoute,
+        }) => (
+          (subRoute && subRoute.length > 0) ?
+          subRoutes(path, subRoute) :
+          <Route
+            key={path}
+            path={path}
+            component={component}
+          />
+        )
+      )}
       <Redirect to={routes.transactions.path} />
     </Switch>
   </Layout>

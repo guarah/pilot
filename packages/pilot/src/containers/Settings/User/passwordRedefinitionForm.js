@@ -117,7 +117,7 @@ class PasswordRedefinitionForm extends Component {
         <CardActions>
           <Button
             type="reset"
-            size="large"
+            size="default"
             fill="outline"
             onClick={this.handleCancellation}
           >
@@ -125,7 +125,7 @@ class PasswordRedefinitionForm extends Component {
           </Button>
           <Button
             type="submit"
-            size="large"
+            size="default"
             fill="gradient"
           >
             {t('settings.user.access.button.save')}
