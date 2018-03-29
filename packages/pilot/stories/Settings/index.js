@@ -10,7 +10,6 @@ storiesOf('Settings', module)
   ))
   .add('User Settings', () => (
     <UserSettings
-      handlePersonalFormSubmit={action('personal form submit')}
-      handleAddressFormSubmit={action('address form submit')}
+      handlePasswordFormSubmit={action('personal form submit')}
     />
   ))

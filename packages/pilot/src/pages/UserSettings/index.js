@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import {
   compose,
+  map,
+  path,
 } from 'ramda'
 import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
@@ -31,15 +33,17 @@ class UserSettingsPage extends React.Component {
 
   handleRedefinePassword ({ current_password, new_password }) {
     const { id } = this.props.user
-
     this.client
       .user.updatePassword({
         current_password,
         new_password,
         id,
       })
-      .then(response => console.dir(response))
-      .catch(error => console.dir(error))
+      .then(response => console.dir(JSON.stringify(response)))
+      .catch((response) => {
+        const formatErrors = resp => map(error => error.message, path(['response', 'errors'], resp))
+        console.log(formatErrors(response))
+      })
   }
 
   render () {
@@ -57,7 +61,7 @@ class UserSettingsPage extends React.Component {
 }
 
 UserSettingsPage.propTypes = {
-  client: PropTypes.func.isRequired,
+  client: PropTypes.object.isRequired, // eslint-disable-line
   user: PropTypes.shape({
     name: PropTypes.string,
     id: PropTypes.string,
