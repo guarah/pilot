@@ -1,0 +1,78 @@
+{
+  "recipient": {
+    "id": "re_ciuvld093j48t4tij3t",
+    "name": "lorem ipsum",
+    "bank_account": {
+      "id": "ba_ciuv0j420r84f",
+      "type": "conta_corrente",
+      "bank_code": "341",
+      "agency": "213123",
+      "account": "2131322"
+    }
+  },
+  "requests": [
+    {
+      "id": "ba_ciuv9f9j43f8jt98",
+      "type": "anticipation",
+      "created_at": "2017-01-01",
+      "amount": 2342342
+    }
+  ],
+  "balance": {
+    "amount": 10,
+    "outcoming": 10
+    "available": {
+      "withdrawal": 324098243,
+      "anticipation": 1438092843
+    },
+  },
+  "search": {
+    "total": {
+      "outcoming": 233213,
+      "outgoing": 213123,
+      "net": 21323
+    },
+    "summary": {
+      "previous": {
+      },
+      "outcoming": {
+        "receivables": 10,
+        "anticipation": 10,
+      },
+      "outgoing": {
+        "refunds": 10,
+        "chargebacks": 10,
+        "mdr": 10,
+        "withdrawals": 10,
+        "anticipation_fee": 10,
+        "antifraud_fee": 10,
+        "processing_fee": 10,
+      },
+    },
+    "operations": {
+      "total": 2321313132,
+      "count": 98324,
+      "offset": 0,
+      "rows": [
+        {
+          "id": 12321321,
+          "type": "anticipation",
+          "description": "dsfsdfdsfsdfsdf",
+          "payment_date": {
+            "actual": "2017-01-02",
+            "original": "2017-01-01"
+          },
+          "outcoming": [
+            { "type": "payable", "amount": 123131231 },
+            { "type": "mdr", "amount": 123131231 }
+          ],
+          "outgoing": [
+            { "type": "refund", "amount": 2312312 },
+            { "type": "mdr", "amount": 2312312 },
+          ],
+          "net": 328409
+        }
+      ]
+    }
+  }
+}
