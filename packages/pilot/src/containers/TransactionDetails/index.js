@@ -27,12 +27,12 @@ import {
   Col,
   Grid,
   Row,
+  Legend,
 } from 'former-kit'
 import IconInfo from 'emblematic-icons/svg/Info32.svg'
 import statusLegends from '../../models/statusLegends'
 import decimalCurrencyFormatter from '../../formatters/decimalCurrency'
 import currencyFormatter from '../../formatters/currency'
-import TransactionHead from '../../components/TransactionHead'
 import PaymentCard from '../../components/PaymentCard'
 import PaymentBoleto from '../../components/PaymentBoleto'
 import TotalDisplay from '../../components/TotalDisplay'
@@ -41,6 +41,8 @@ import RecipientList from '../../containers/RecipientList'
 import CustomerCard from '../../components/CustomerCard'
 import TransactionDetailsCard from '../../components/TransactionDetailsCard'
 import TreeView from '../../components/TreeView'
+import DetailsHead from '../../components/DetailsHead'
+
 import style from './style.css'
 
 const isZeroOrNegative = value => value <= 0
@@ -109,6 +111,16 @@ const getHeaderAmountLabel = (transaction, headerLabels) => {
   }
   return headerLabels.cardAmountLabel
 }
+
+const renderLegend = status => (
+  <Legend
+    color={statusLegends[status].color}
+    acronym={statusLegends[status].text}
+    hideLabel
+  >
+    { statusLegends[status].acronym }
+  </Legend>
+)
 
 class TransactionDetails extends Component {
   constructor (props) {
@@ -314,16 +326,23 @@ class TransactionDetails extends Component {
             tablet={12}
             palm={12}
           >
-            <TransactionHead
-              id={id}
-              status={status}
-              installmentsLabel={headerLabels.installmentsLabel}
-              installments={headerLabels.installments}
-              actions={[]}
+            <DetailsHead
               title={headerLabels.title}
-              statusLabel={headerLabels.statusLabel}
-              amountLabel={getHeaderAmountLabel(transaction, headerLabels)}
-              amount={currencyFormatter(amount)}
+              identifier={`#${id}`}
+              properties={[
+                {
+                  title: headerLabels.statusLabel,
+                  children: renderLegend(status),
+                },
+                {
+                  title: headerLabels.installmentsLabel,
+                  children: headerLabels.installments,
+                },
+                {
+                  title: getHeaderAmountLabel(transaction, headerLabels),
+                  children: currencyFormatter(amount),
+                },
+              ]}
             />
           </Col>
         </Row>

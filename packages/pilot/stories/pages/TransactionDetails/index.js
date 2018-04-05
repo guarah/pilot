@@ -42,9 +42,12 @@ const eventsLabels = {
 }
 
 const headerLabels = {
-  installments: 'Pagamento à vista',
-  title: 'Transação',
-  statusLabel: 'status',
+  boletoAmountLabel: 'VALOR EMITIDO',
+  cardAmountLabel: 'VALOR AUTORIZADO',
+  title: 'TRANSAÇÃO',
+  statusLabel: 'STATUS',
+  installmentsLabel: 'PAGAMENTO',
+  installments: 'Parcelado 12x',
 }
 
 const paymentBoletoLabels = {
