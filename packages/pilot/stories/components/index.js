@@ -11,6 +11,7 @@ import TotalDisplay from './TotalDisplay'
 import TransactionDetailsCard from './TransactionDetailsCard'
 import TreeView from './TreeView'
 import PendingRequests from './PendingRequests'
+import BalanceTotalDisplay from './BalanceTotalDisplay'
 
 storiesOf('Components', module)
   .add('Details head', () => <DetailsHead />)
@@ -41,3 +42,5 @@ storiesOf('Components', module)
   .add('Operations', () => (
     <Operations />
   ))
+  .add('Balance total display', () => <BalanceTotalDisplay />)
+
