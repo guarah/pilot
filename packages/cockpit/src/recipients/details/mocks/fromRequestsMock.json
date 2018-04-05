@@ -44,7 +44,19 @@
       "amount": 4000
     }
   },
-  "bulk_anticipations": [
+  "bulk_anticipations_limit": {
+    "maximum": {
+      "amount": 23000,
+      "anticipation_fee": 1000,
+      "fee": 2633
+    },
+    "minimum": {
+      "amount": 10000,
+      "anticipation_fee": 200,
+      "fee": 1543
+    }
+  },
+  "bulk_anticipations_pending": [
     {
       "amount": 600005,
       "anticipation_fee": 44940,
@@ -59,19 +71,6 @@
       "type": "spot"
     },
     {
-      "amount": 220439,
-      "anticipation_fee": 24271,
-      "date_created": "2017-01-06T17:09:09.000Z",
-      "date_updated": "2017-01-06T17:09:43.000Z",
-      "fee": 11028,
-      "id": "ba_cig1214ng000sii6eryzz4pjb",
-      "object": "bulk_anticipation",
-      "payment_date": "2017-02-15T02:00:00.000Z",
-      "status": "canceled",
-      "timeframe": "start",
-      "type": "spot"
-    },
-    {
       "amount": 406065,
       "anticipation_fee": 16842,
       "date_created": "2017-01-06T17:08:41.000Z",
@@ -80,7 +79,7 @@
       "id": "ba_cig120jcg000rii6evg415z4w",
       "object": "bulk_anticipation",
       "payment_date": "2017-02-16T02:00:00.000Z",
-      "status": "canceled",
+      "status": "pending",
       "timeframe": "start",
       "type": "spot"
     }
@@ -92,12 +91,12 @@
       "status": "available",
       "balance_amount": 3019898,
       "balance_old_amount": 2920013,
-      "movement_type": "payable",
       "amount": 100000,
       "fee": 115,
       "date_created": "2017-03-06T14:00:31.000Z",
       "movement_object": {
         "object": "payable",
+        "type": "payable",
         "id": 1297,
         "status": "paid",
         "amount": 100000,
@@ -114,12 +113,12 @@
       "status": "available",
       "balance_amount": 2920013,
       "balance_old_amount": 2910128,
-      "movement_type": "payable",
       "amount": 10000,
       "fee": 115,
       "date_created": "2017-03-06T18:44:42.000Z",
       "movement_object": {
         "object": "payable",
+        "type": "payable",
         "id": 1294,
         "status": "paid",
         "amount": 10000,
@@ -136,12 +135,12 @@
       "status": "available",
       "balance_amount": 2910128,
       "balance_old_amount": 2880243,
-      "movement_type": "payable",
       "amount": 30000,
       "fee": 115,
       "date_created": "2017-03-05T19:32:36.000Z",
       "movement_object": {
         "object": "payable",
+        "type": "payable",
         "id": 1290,
         "status": "paid",
         "amount": 30000,
@@ -150,6 +149,66 @@
         "transaction_id": 185273,
         "payment_date": "2017-03-05T03:00:00.000Z",
         "date_created": "2017-03-05T19:32:35.000Z"
+      }
+    },
+    {
+      "object": "balance_operation",
+      "id": 2499868,
+      "status": "available",
+      "balance_amount": 2910128,
+      "balance_old_amount": 2880243,
+      "type": "payable",
+      "amount": 30000,
+      "fee": 115,
+      "date_created": "2017-08-03T18:20:54.464Z",
+      "movement_object": {
+        "object": "payable",
+        "id": 1966185,
+        "status": "paid",
+        "amount": 30000,
+        "fee": 115,
+        "anticipation_fee": 100,
+        "installment": 3,
+        "transaction_id": 1785141,
+        "split_rule_id": null,
+        "bulk_anticipation_id": null,
+        "recipient_id": "re_cj5idth9i00lc8c6elbeiayhs",
+        "payment_date": "2017-03-03T03:00:00.000Z",
+        "original_payment_date": null,
+        "type": "credit",
+        "payment_method": "credit_card",
+        "accrual_date": null,
+        "date_created": "2017-04-03T18:20:54.457Z"
+      }
+    },
+    {
+      "object": "balance_operation",
+      "id": 2499850,
+      "status": "available",
+      "balance_amount": 3019898,
+      "balance_old_amount": 2920013,
+      "type": "payable",
+      "amount": 100000,
+      "fee": 115,
+      "date_created": "2017-08-03T18:20:54.464Z",
+      "movement_object": {
+        "object": "payable",
+        "id": 1966396,
+        "status": "paid",
+        "amount": 100000,
+        "fee": 115,
+        "anticipation_fee": 100,
+        "installment": 1,
+        "transaction_id": 1785151,
+        "split_rule_id": "sr_cj5tws6kk001oij6d6lw8mmi1",
+        "bulk_anticipation_id": null,
+        "recipient_id": "re_cj5idth9i00lc8c6elboaxyhs",
+        "payment_date": "2017-09-03T03:00:00.000Z",
+        "original_payment_date": null,
+        "type": "refund",
+        "payment_method": "credit_card",
+        "accrual_date": null,
+        "date_created": "2017-07-03T18:20:54.457Z"
       }
     }
   ]
