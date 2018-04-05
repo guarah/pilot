@@ -1,5 +1,5 @@
-import balance from './balance'
+import details from './details'
 
 export default {
-  balance,
+  details,
 }
