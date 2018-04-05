@@ -1,13 +1,13 @@
 {
   "recipient": {
-    "id": "re_ciuvld093j48t4tij3t",
-    "name": "lorem ipsum",
+    "id": "re_cixm61j7e00doin6de8ocgttb",
+    "name": "API BANK ACCOUNT",
     "bank_account": {
-      "id": "ba_ciuv0j420r84f",
+      "id": 17365090,
       "type": "conta_corrente",
       "bank_code": "341",
-      "agency": "213123",
-      "account": "2131322"
+      "agency": "0932-5",
+      "account": "58054-1"
     }
   },
   "requests": [
@@ -19,35 +19,18 @@
     }
   ],
   "balance": {
-    "amount": 10,
-    "outcoming": 10
+    "amount": 3000,
+    "outcoming": 2000,
     "available": {
-      "withdrawal": 324098243,
+      "withdrawal": 4000,
       "anticipation": 1438092843
-    },
+    }
   },
   "search": {
     "total": {
       "outcoming": 233213,
       "outgoing": 213123,
       "net": 21323
-    },
-    "summary": {
-      "previous": {
-      },
-      "outcoming": {
-        "receivables": 10,
-        "anticipation": 10,
-      },
-      "outgoing": {
-        "refunds": 10,
-        "chargebacks": 10,
-        "mdr": 10,
-        "withdrawals": 10,
-        "anticipation_fee": 10,
-        "antifraud_fee": 10,
-        "processing_fee": 10,
-      },
     },
     "operations": {
       "total": 2321313132,
@@ -68,7 +51,7 @@
           ],
           "outgoing": [
             { "type": "refund", "amount": 2312312 },
-            { "type": "mdr", "amount": 2312312 },
+            { "type": "mdr", "amount": 2312312 }
           ],
           "net": 328409
         }
