@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Card,
-  CardContent,
-} from 'former-kit'
+import cx from 'classnames'
 
 import currencyFormatter from '../../formatters/currency'
 import style from './style.css'
@@ -27,25 +24,29 @@ const TotalDisplay = ({
   subtitle,
   unity,
 }) => (
-  <Card>
-    <CardContent className={style.content}>
-      <div className={style.title}>
-        <h2 style={{ color }}>{title}</h2>
-        <span>({unity})</span>
-      </div>
+  <div
+    className={cx(style.content, {
+      [style.withSubtitle]: subtitle,
+    })}
+  >
+    <div className={style.title}>
+      <h2 style={{ color }}>{title}</h2>
+      <span>({unity})</span>
+    </div>
 
-      <div className={style.amount}>
-        <small style={{ color }}>
-          {renderSymbol(amount)}
-        </small>
-        <h3>{currencyFormatter(amount).replace('R$', '').replace('-', '')}</h3>
-      </div>
+    <div className={style.amount}>
+      <small style={{ color }}>
+        {renderSymbol(amount)}
+      </small>
+      <h3>{currencyFormatter(amount).replace('R$', '').replace('-', '')}</h3>
+    </div>
 
+    {subtitle &&
       <div className={style.subtitle}>
         {subtitle}
       </div>
-    </CardContent>
-  </Card>
+    }
+  </div>
 )
 
 TotalDisplay.propTypes = {

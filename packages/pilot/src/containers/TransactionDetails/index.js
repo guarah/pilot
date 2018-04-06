@@ -362,13 +362,15 @@ class TransactionDetails extends Component {
             tablet={6}
             palm={12}
           >
-            <TotalDisplay
-              amount={payment.paid_amount}
-              color="#37cc9a"
-              subtitle={totalDisplayLabels.captured_at}
-              title={totalDisplayLabels.paid_amount}
-              unity={totalDisplayLabels.currency_symbol}
-            />
+            <Card>
+              <TotalDisplay
+                amount={payment.paid_amount}
+                color="#37cc9a"
+                subtitle={totalDisplayLabels.captured_at}
+                title={totalDisplayLabels.paid_amount}
+                unity={totalDisplayLabels.currency_symbol}
+              />
+            </Card>
           </Col>
           <Col
             desk={3}
@@ -376,19 +378,21 @@ class TransactionDetails extends Component {
             tablet={6}
             palm={12}
           >
-            <TotalDisplay
-              amount={
-                getOutAmount([
-                  payment.refund_amount,
-                  payment.cost_amount,
-                  payment.mdr_amount,
-                ])
-              }
-              color="#ff796f"
-              subtitle={this.renderOutAmountSubTitle()}
-              title={totalDisplayLabels.out_amount}
-              unity={totalDisplayLabels.currency_symbol}
-            />
+            <Card>
+              <TotalDisplay
+                amount={
+                  getOutAmount([
+                    payment.refund_amount,
+                    payment.cost_amount,
+                    payment.mdr_amount,
+                  ])
+                }
+                color="#ff796f"
+                subtitle={this.renderOutAmountSubTitle()}
+                title={totalDisplayLabels.out_amount}
+                unity={totalDisplayLabels.currency_symbol}
+              />
+            </Card>
           </Col>
           <Col
             desk={3}
@@ -396,13 +400,15 @@ class TransactionDetails extends Component {
             tablet={6}
             palm={12}
           >
-            <TotalDisplay
-              amount={payment.net_amount}
-              color="#4ca9d7"
-              subtitle={totalDisplayLabels.receive_date}
-              title={totalDisplayLabels.net_amount}
-              unity={totalDisplayLabels.currency_symbol}
-            />
+            <Card>
+              <TotalDisplay
+                amount={payment.net_amount}
+                color="#4ca9d7"
+                subtitle={totalDisplayLabels.receive_date}
+                title={totalDisplayLabels.net_amount}
+                unity={totalDisplayLabels.currency_symbol}
+              />
+            </Card>
           </Col>
         </Row>
 
