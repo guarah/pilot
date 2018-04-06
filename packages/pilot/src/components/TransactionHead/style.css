@@ -17,6 +17,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 14px;
+
   & > div {
     height: var(--spacing-large);
     display: flex;
@@ -28,7 +29,9 @@
 .transactionStatus {
   display: flex;
   align-items: center;
+
   /* margin-top: calc(var(--spacing-small) + 1px); */
+
   & abbr {
     margin-right: var(--spacing-small);
   }

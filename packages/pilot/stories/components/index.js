@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react'
 import CustomerCard from './CustomerCard'
 import EventList from './EventList'
 import PaymentCards from './PaymentCards'
+import Operations from './Operations'
 import RecipientSectionState from './RecipientSection'
 import TotalDisplay from './TotalDisplay'
 import TransactionDetailsCard from './TransactionDetailsCard'
@@ -39,4 +40,6 @@ storiesOf('Components', module)
   .add('Pending Requests', () => (
     <PendingRequests />
   ))
-
+  .add('Operations', () => (
+    <Operations />
+  ))
