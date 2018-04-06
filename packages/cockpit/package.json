@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "bluebird": "3.5.1",
+    "business-moment": "1.1.4",
     "moment": "2.21.0",
     "pagarme": "3.4.0",
     "ramda": "0.25.0"

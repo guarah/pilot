@@ -1740,11 +1740,17 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@3.5.1, bluebird@^3.4.7, bluebird@^3.5.1:
+bluebird-ff@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/bluebird-ff/-/bluebird-ff-1.0.2.tgz#0abb05f775c39cfba57bcb046678ad89837275c5"
+  dependencies:
+    bluebird "^2.10.2"
+
+bluebird@3.5.1, bluebird@^3.0.5, bluebird@^3.4.7, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-bluebird@^2.9.24:
+bluebird@^2.10.2, bluebird@^2.9.24:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
@@ -1981,6 +1987,20 @@ builtin-modules@^1.0.0, builtin-modules@^1.1.1:
 builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
+
+business-calendar@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/business-calendar/-/business-calendar-1.3.3.tgz#85c1473d0ffa62f2435eecc4cecd8eb39b0ed16d"
+
+business-moment@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/business-moment/-/business-moment-1.1.4.tgz#5678e9601119b3ed1ed81cac92a89c458aa3a9f9"
+  dependencies:
+    bluebird-ff "^1.0.2"
+    business-calendar "^1.3.3"
+    moment "2.13.0"
+    prequest "^1.0.0"
+    ramda "^0.19.1"
 
 bytes@3.0.0:
   version "3.0.0"
@@ -6904,6 +6924,10 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
+moment@2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.13.0.tgz#24162d99521e6d40f99ae6939e806d2139eaac52"
+
 moment@2.20.1:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
@@ -7182,6 +7206,10 @@ oauth-sign@~0.8.1, oauth-sign@~0.8.2:
 object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+
+object-assign@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-2.1.1.tgz#43c36e5d569ff8e4816c4efa8be02d26967c18aa"
 
 object-copy@^0.1.0:
   version "0.1.0"
@@ -8329,6 +8357,14 @@ prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
+prequest@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prequest/-/prequest-1.0.0.tgz#7f1f0342564add775b825dbbfaf00fc6458096e7"
+  dependencies:
+    bluebird "^3.0.5"
+    object-assign "^2.1.1"
+    request "^2.53.0"
+
 preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
@@ -8552,6 +8588,10 @@ railroad-diagrams@^1.0.0:
 ramda@0.25.0, ramda@0.x:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
+
+ramda@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.19.1.tgz#89c4ad697265ff6b1face9f286439e2520d6679c"
 
 randexp@0.4.6:
   version "0.4.6"
@@ -9545,7 +9585,7 @@ request@2.83.0:
     tunnel-agent "^0.6.0"
     uuid "^3.1.0"
 
-request@^2.79.0, request@^2.83.0:
+request@^2.53.0, request@^2.79.0, request@^2.83.0:
   version "2.85.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.85.0.tgz#5a03615a47c61420b3eb99b7dba204f83603e1fa"
   dependencies:
