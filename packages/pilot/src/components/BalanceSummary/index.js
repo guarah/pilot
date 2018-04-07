@@ -22,6 +22,12 @@ const renderDate = (isoDate) => {
   )
 }
 
+const colors = {
+  net: '#4ca9d7',
+  outcoming: '#37cc9a',
+  outgoing: '#ff796f',
+}
+
 const BalanceSummary = ({ amount, dates }) => (
   <CardSection>
     <div className={style.content}>
@@ -32,38 +38,39 @@ const BalanceSummary = ({ amount, dates }) => (
       </div>
 
       <div className={style.amount}>
-        <TotalDisplay
-          title="Total de entradas"
-          amount={amount.outcoming}
-          color="#37cc9a"
-          unity="R$"
-        />
-
-        <TotalDisplay
-          title="Total de Saídas"
-          amount={amount.outgoing}
-          color="#ff796f"
-          unity="R$"
-        />
-
-        <TotalDisplay
-          title="Total Liquido"
-          amount={amount.net}
-          color="#4ca9d7"
-          unity="R$"
-        />
+        {
+          Object.keys(amount).map(type => (
+            <TotalDisplay
+              title={amount[type].title}
+              amount={amount[type].value}
+              color={colors[type]}
+              unity={amount[type].unity}
+            />
+          ))
+        }
       </div>
     </div>
   </CardSection>
 )
 
-
 BalanceSummary.propTypes = {
-  amount: PropTypes.shape({
-    net: PropTypes.number.isRequired,
-    outcoming: PropTypes.number.isRequired,
-    outgoing: PropTypes.number.isRequired,
-  }).isRequired,
+  amount: PropTypes.arrayOf(PropTypes.shape({
+    net: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      unity: PropTypes.string,
+    }).isRequired,
+    outcoming: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      unity: PropTypes.string,
+    }).isRequired,
+    outgoing: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      unity: PropTypes.string,
+    }).isRequired,
+  })).isRequired,
   dates: PropTypes.shape({
     end: PropTypes.instanceOf(Date).isRequired,
     start: PropTypes.instanceOf(Date).isRequired,
