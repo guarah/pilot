@@ -36,12 +36,9 @@ class Operations extends PureComponent {
     const {
       columns,
       loading,
-      offset,
+      currentPage,
       ofLabel,
-      onOrderChange,
       onPageChange,
-      order,
-      orderColumnIndex,
       rows,
       title,
       totalPages,
@@ -55,7 +52,7 @@ class Operations extends PureComponent {
           />
           <CardContent className={style.pagination}>
             <Pagination
-              currentPage={offset}
+              currentPage={currentPage}
               disabled={loading}
               onPageChange={onPageChange}
               strings={{
@@ -68,15 +65,12 @@ class Operations extends PureComponent {
             <Table
               columns={columns}
               disabled={loading}
-              onOrderChange={onOrderChange}
-              orderColumn={orderColumnIndex}
-              orderSequence={order}
               rows={rows}
             />
           </CardGraphic>
           <CardContent className={classNames(style.paginationBottom, style.pagination)}>
             <Pagination
-              currentPage={offset}
+              currentPage={currentPage}
               disabled={loading}
               onPageChange={onPageChange}
               strings={{
@@ -104,12 +98,9 @@ Operations.propTypes = {
     title: PropTypes.string.isRequired,
   })).isRequired,
   loading: PropTypes.bool,
-  offset: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
   ofLabel: PropTypes.string.isRequired,
-  onOrderChange: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
-  order: PropTypes.string,
-  orderColumnIndex: PropTypes.number,
   rows: PropTypes.arrayOf(PropTypes.shape({
     description: PropTypes.string,
     id: PropTypes.oneOfType([
@@ -132,8 +123,6 @@ Operations.propTypes = {
 
 Operations.defaultProps = {
   loading: false,
-  order: 'ascending',
-  orderColumnIndex: null,
 }
 
 export default Operations
