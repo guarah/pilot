@@ -1,6 +1,8 @@
 import Transaction32 from 'emblematic-icons/svg/Transaction32.svg'
+import Configuration32 from 'emblematic-icons/svg/Configuration32.svg'
 
 import Transactions from '../Transactions'
+import UserSettings from '../UserSettings'
 
 export default {
   transactions: {
@@ -18,6 +20,8 @@ export default {
   userSettings: {
     title: 'settings.user',
     path: '/settings/user',
+    component: UserSettings,
+    icon: Configuration32,
     exact: true,
   },
 }

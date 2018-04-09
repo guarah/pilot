@@ -1,0 +1,12 @@
+.formInput {
+  width: 100%;
+}
+
+.spacingAround > button {
+  margin-left: 12px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
