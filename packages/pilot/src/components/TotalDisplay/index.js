@@ -18,10 +18,10 @@ const renderSymbol = (value) => {
 }
 
 const TotalDisplay = ({
-  title,
   amount,
   color,
   subtitle,
+  title,
   unity,
 }) => (
   <div
@@ -50,11 +50,11 @@ const TotalDisplay = ({
 )
 
 TotalDisplay.propTypes = {
-  title: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
-  unity: PropTypes.string.isRequired,
   subtitle: PropTypes.node,
+  title: PropTypes.string.isRequired,
+  unity: PropTypes.string.isRequired,
 }
 
 TotalDisplay.defaultProps = {

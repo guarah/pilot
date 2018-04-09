@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import {
-  Card,
   CardContent,
   CardGraphic,
   CardSection,
@@ -44,23 +43,25 @@ class Operations extends PureComponent {
       totalPages,
     } = this.props
     return (
-      <Card>
+      <div className={style.container}>
         <CardSection>
-          <CardSectionTitle
-            title={title}
-            subtitle={this.renderSubTitle()}
-          />
-          <CardContent className={style.pagination}>
-            <Pagination
-              currentPage={currentPage}
-              disabled={loading}
-              onPageChange={onPageChange}
-              strings={{
-                of: ofLabel,
-              }}
-              totalPages={totalPages}
+          <div className={style.head}>
+            <CardSectionTitle
+              title={title}
+              subtitle={this.renderSubTitle()}
             />
-          </CardContent>
+            <CardContent className={style.pagination}>
+              <Pagination
+                currentPage={currentPage}
+                disabled={loading}
+                onPageChange={onPageChange}
+                strings={{
+                  of: ofLabel,
+                }}
+                totalPages={totalPages}
+              />
+            </CardContent>
+          </div>
           <CardGraphic>
             <Table
               columns={columns}
@@ -80,7 +81,7 @@ class Operations extends PureComponent {
             />
           </CardContent>
         </CardSection>
-      </Card>
+      </div>
     )
   }
 }
