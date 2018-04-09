@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import { keys } from 'ramda'
 import { CardSection } from 'former-kit'
 import IconForward from 'emblematic-icons/svg/ArrowForward24.svg'
 
@@ -8,19 +9,15 @@ import TotalDisplay from '../TotalDisplay'
 
 import style from './style.css'
 
-const renderDate = (isoDate) => {
-  const date = moment(isoDate)
-
-  return (
-    <div className={style.date}>
-      <h3>{date.format('DD')}</h3>
-      <div>
-        <strong>{date.format('MMMM')} {date.year()}</strong>
-        <span>{date.format('dddd')}</span>
-      </div>
+const renderDate = date => (
+  <div className={style.date}>
+    <h3>{date.format('DD')}</h3>
+    <div>
+      <strong>{date.format('MMMM')} {date.year()}</strong>
+      <span>{date.format('dddd')}</span>
     </div>
-  )
-}
+  </div>
+)
 
 const colors = {
   net: '#4ca9d7',
@@ -39,7 +36,7 @@ const BalanceSummary = ({ amount, dates }) => (
 
       <div className={style.amount}>
         {
-          Object.keys(amount).map(type => (
+          keys(amount).map(type => (
             <TotalDisplay
               title={amount[type].title}
               amount={amount[type].value}
@@ -72,8 +69,8 @@ BalanceSummary.propTypes = {
     }).isRequired,
   })).isRequired,
   dates: PropTypes.shape({
-    end: PropTypes.instanceOf(Date).isRequired,
-    start: PropTypes.instanceOf(Date).isRequired,
+    end: PropTypes.instanceOf(moment).isRequired,
+    start: PropTypes.instanceOf(moment).isRequired,
   }).isRequired,
 }
 
