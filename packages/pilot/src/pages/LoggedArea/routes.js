@@ -15,4 +15,9 @@ export default {
     path: '/transactions/:id',
     exact: true,
   },
+  userSettings: {
+    title: 'settings.user',
+    path: '/settings/user',
+    exact: true,
+  },
 }
