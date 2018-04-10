@@ -18,7 +18,7 @@ export default {
     exact: true,
   },
   userSettings: {
-    title: 'settings.user',
+    title: 'settings.user.menu',
     path: '/settings/user',
     component: UserSettings,
     icon: Configuration32,

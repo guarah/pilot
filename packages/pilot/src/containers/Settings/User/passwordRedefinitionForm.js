@@ -16,8 +16,8 @@ import {
 } from 'ramda'
 import styles from './style.css'
 
-const required = t => value => (value ? false : t('settings.user.access.fieldrequired'))
-const areStringsEqual = t => str1 => str2 => (equals(str1, str2) ? false : t('settings.user.access.passwordequal'))
+const required = t => value => (value ? false : t('settings.user.card.access.fieldRequired'))
+const areStringsEqual = t => str1 => str2 => (equals(str1, str2) ? false : t('settings.user.card.access.passwordEqual'))
 
 class PasswordRedefinitionForm extends Component {
   constructor (props) {
@@ -89,7 +89,7 @@ class PasswordRedefinitionForm extends Component {
             <Row>
               <Col palm={12} tablet={12} desk={3} tv={3}>
                 <FormInput
-                  label={t('settings.user.access.currentPassword')}
+                  label={t('settings.user.card.access.currentPassword')}
                   name="current_password"
                   type="password"
                   className={styles.formInput}
@@ -97,7 +97,7 @@ class PasswordRedefinitionForm extends Component {
               </Col>
               <Col palm={12} tablet={12} desk={3} tv={3}>
                 <FormInput
-                  label={t('settings.user.access.newPassword')}
+                  label={t('settings.user.card.access.newPassword')}
                   name="new_password"
                   type="password"
                   className={styles.formInput}
@@ -105,7 +105,7 @@ class PasswordRedefinitionForm extends Component {
               </Col>
               <Col palm={12} tablet={12} desk={3} tv={3}>
                 <FormInput
-                  label={t('settings.user.access.matchNewPassword')}
+                  label={t('settings.user.card.access.matchNewPassword')}
                   name="new_password_confirmation"
                   type="password"
                   className={styles.formInput}
@@ -117,18 +117,18 @@ class PasswordRedefinitionForm extends Component {
         <CardActions>
           <Button
             type="reset"
-            size="default"
             fill="outline"
+            size="tiny"
             onClick={this.handleCancellation}
           >
-            {t('settings.user.access.button.cancel')}
+            {t('settings.user.card.access.buttonCancel')}
           </Button>
           <Button
             type="submit"
-            size="default"
+            size="tiny"
             fill="gradient"
           >
-            {t('settings.user.access.button.save')}
+            {t('settings.user.card.access.buttonSubmit')}
           </Button>
         </CardActions>
       </Form>

@@ -46,5 +46,24 @@
   "transactions": {
     "list": "TRANSAÇÕES",
     "details": "TRANSAÇÃO"
+  },
+  "settings": {
+    "user": {
+      "menu": "MINHA CONTA",
+      "card": {
+        "header": "DADOS PESSOAIS",
+        "access": {
+          "title": "Alterar senha",
+          "subtitle": "Recomendamos que use uma senha forte e diferente das demais que costumar ultilizar",
+          "currentPassword": "Senha",
+          "newPassword": "Nova senha",
+          "matchNewPassword": "Confirme a nova senha",
+          "buttonSubmit": "Salvar alterações",
+          "buttonCancel": "Cancelar",
+          "fieldRequired": "Esse campo é requirido",
+          "passwordEqual": "As senhas não conferem"
+        }
+      }
+    }
   }
 }
