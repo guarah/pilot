@@ -26,8 +26,8 @@ const colors = {
 }
 
 const BalanceSummary = ({ amount, dates }) => (
-  <CardSection>
-    <div className={style.content}>
+  <div className={style.content}>
+    <CardSection>
       <div className={style.dates}>
         { renderDate(dates.start) }
         <IconForward className={style.icon} />
@@ -38,6 +38,7 @@ const BalanceSummary = ({ amount, dates }) => (
         {
           keys(amount).map(type => (
             <TotalDisplay
+              key={type}
               title={amount[type].title}
               amount={amount[type].value}
               color={colors[type]}
@@ -46,12 +47,12 @@ const BalanceSummary = ({ amount, dates }) => (
           ))
         }
       </div>
-    </div>
-  </CardSection>
+    </CardSection>
+  </div>
 )
 
 BalanceSummary.propTypes = {
-  amount: PropTypes.arrayOf(PropTypes.shape({
+  amount: PropTypes.shape({
     net: PropTypes.shape({
       title: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
@@ -67,7 +68,7 @@ BalanceSummary.propTypes = {
       value: PropTypes.number.isRequired,
       unity: PropTypes.string,
     }).isRequired,
-  })).isRequired,
+  }).isRequired,
   dates: PropTypes.shape({
     end: PropTypes.instanceOf(moment).isRequired,
     start: PropTypes.instanceOf(moment).isRequired,
