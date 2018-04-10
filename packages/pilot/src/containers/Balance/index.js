@@ -250,7 +250,7 @@ class Balance extends Component {
             tv={12}
           >
             <DetailsHead
-              actions={isNil(onChangeRecipientClick) ? null : headActions}
+              actions={isNil(onChangeRecipientClick) ? [] : headActions}
               identifier={recipient.id}
               properties={this.getHeadProperties()}
               title={t('balance.recipient')}
@@ -378,12 +378,12 @@ Balance.propTypes = {
     start: PropTypes.instanceOf(moment),
   }).isRequired,
   loading: PropTypes.bool,
-  onAnticipationClick: PropTypes.func.isRequired,
-  onCancelRequestClick: PropTypes.func.isRequired,
-  onChangeRecipientClick: PropTypes.func.isRequired,
+  onAnticipationClick: PropTypes.func,
+  onCancelRequestClick: PropTypes.func,
+  onChangeRecipientClick: PropTypes.func,
   onDateChange: PropTypes.func.isRequired,
   onPageChange: PropTypes.func.isRequired,
-  onWithdrawClick: PropTypes.func.isRequired,
+  onWithdrawClick: PropTypes.func,
   recipient: PropTypes.shape({
     bank_account: PropTypes.shape({
       account: PropTypes.string.isRequired,
@@ -431,6 +431,10 @@ Balance.propTypes = {
 
 Balance.defaultProps = {
   loading: false,
+  onAnticipationClick: null,
+  onCancelRequestClick: null,
+  onChangeRecipientClick: null,
+  onWithdrawClick: null,
 }
 
 export default Balance
