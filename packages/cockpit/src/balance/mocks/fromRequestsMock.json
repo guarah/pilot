@@ -32,6 +32,35 @@
       "date_created": "2017-01-06T18:52:22.215Z"
     }
   },
+  "summary": [
+    {
+      "date": "1975-08-19T23:15:30.0w0Z",
+      "available": {
+        "amount": {
+          "balance": 30000,
+          "in": 30000,
+          "out": 5000
+        },
+        "fee": {
+          "balance": 1500,
+          "in": 1500,
+          "out": 500
+        }
+      },
+      "waiting_funds": {
+        "amount": {
+          "balance": 30000,
+          "in": 30000,
+          "out": 5000
+        },
+        "fee": {
+          "balance": 1500,
+          "in": 1500,
+          "out": 500
+        }
+      }
+    }
+  ],
   "balance": {
     "object": "balance",
     "waiting_funds": {

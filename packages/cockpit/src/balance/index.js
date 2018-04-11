@@ -16,12 +16,19 @@ const getBulkAnticipationsLimits = (client, recipientId) =>
 const balance = client => (recipientId, {
   count,
   page,
-  start_date,
-  end_date,
+  start_date: startDate,
+  end_date: endDate,
+  status = 'available',
 } = {}) =>
   Promise.props({
     recipient: client.recipients.find({ id: recipientId }),
     balance: client.balance.find({ recipientId }),
+    summary: client.balanceOperations.days({
+      recipient_id: recipientId,
+      status,
+      start_date: startDate,
+      end_date: endDate,
+    }),
     bulk_anticipations_limit: getBulkAnticipationsLimits(client, recipientId),
     bulk_anticipations_pending: client.bulkAnticipations.find({
       recipientId,
@@ -31,8 +38,8 @@ const balance = client => (recipientId, {
       recipientId,
       count,
       page,
-      start_date,
-      end_date,
+      start_date: startDate,
+      end_date: endDate,
     }),
   })
     .then(buildResult)
