@@ -9,11 +9,14 @@ import {
   Col,
   CardActions,
   CardContent,
+  Alert,
 } from 'former-kit'
 import {
   isEmpty,
   equals,
 } from 'ramda'
+import IconWarning from 'emblematic-icons/svg/Warning32.svg'
+import IconInfo from 'emblematic-icons/svg/Info32.svg'
 import styles from './style.css'
 
 const required = t => value => (value ? false : t('settings.user.card.access.fieldRequired'))
@@ -39,6 +42,16 @@ class PasswordRedefinitionForm extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
+  componentWillReceiveProps (nextProps) {
+    const { status: { success } } = nextProps
+
+    if (success) {
+      this.setState({
+        currentFormData: this.state.initalFormData,
+      })
+    }
+  }
+
   handleFormChange (data) {
     this.setState({
       currentFormData: data,
@@ -59,6 +72,7 @@ class PasswordRedefinitionForm extends Component {
   render () {
     const {
       t,
+      status,
     } = this.props
 
     const {
@@ -112,6 +126,28 @@ class PasswordRedefinitionForm extends Component {
                 />
               </Col>
             </Row>
+            <Row>
+              <Col palm={12} tablet={12} desk={12} tv={12}>
+                <div className={styles.errorAlert}>
+                  { status.error &&
+                    <Alert
+                      type="error"
+                      icon={<IconWarning height={16} width={16} />}
+                    >
+                      <p>{status.error}</p>
+                    </Alert>
+                  }
+                  { status.success &&
+                    <Alert
+                      type="info"
+                      icon={<IconInfo height={16} width={16} />}
+                    >
+                      <p>{t('settings.user.card.access.alert.success')}</p>
+                    </Alert>
+                  }
+                </div>
+              </Col>
+            </Row>
           </Grid>
         </CardContent>
         <CardActions>
@@ -138,6 +174,10 @@ class PasswordRedefinitionForm extends Component {
 
 PasswordRedefinitionForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  status: PropTypes.shape({
+    error: PropTypes.string,
+    success: PropTypes.bool,
+  }).isRequired,
   t: PropTypes.func,
 }
 

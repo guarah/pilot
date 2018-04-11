@@ -66,7 +66,7 @@ class UserSettings extends Component {
                     !this.state.passwordInfoSectionCollapsed &&
                       <PasswordRedefinitionForm
                         onSubmit={handlePasswordFormSubmit}
-                        onCancel={() => console.log('canceled')}
+                        status={this.props.passwordFormStatus}
                         t={t}
                       />
                   }
@@ -83,10 +83,18 @@ class UserSettings extends Component {
 UserSettings.propTypes = {
   t: PropTypes.func,
   handlePasswordFormSubmit: PropTypes.func.isRequired,
+  passwordFormStatus: PropTypes.shape({
+    error: PropTypes.string,
+    success: PropTypes.bool,
+  }),
 }
 
 UserSettings.defaultProps = {
   t: t => t,
+  passwordFormStatus: {
+    error: null,
+    success: false,
+  },
 }
 
 export default UserSettings

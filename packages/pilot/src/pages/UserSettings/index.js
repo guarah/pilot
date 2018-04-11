@@ -4,7 +4,9 @@ import { withRouter } from 'react-router-dom'
 import {
   compose,
   map,
-  path,
+  pathOr,
+  head,
+  pipe,
 } from 'ramda'
 import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
@@ -26,7 +28,12 @@ const enhanced = compose(
 class UserSettingsPage extends React.Component {
   constructor (props) {
     super(props)
-    this.state = null
+    this.state = {
+      passwordFormStatus: {
+        error: null,
+        success: false,
+      },
+    }
     this.client = cockpit(props.client)
     this.handleRedefinePassword = this.handleRedefinePassword.bind(this)
   }
@@ -39,10 +46,25 @@ class UserSettingsPage extends React.Component {
         new_password,
         id,
       })
-      .then(response => console.dir(JSON.stringify(response)))
+      .then(() => this.setState({
+        passwordFormStatus: {
+          success: true,
+          error: null,
+        },
+      }))
       .catch((response) => {
-        const formatErrors = resp => map(error => error.message, path(['response', 'errors'], resp))
-        console.log(formatErrors(response))
+        const formatErrors = pipe(
+          pathOr([], ['response', 'errors']),
+          map(error => error.message),
+          head
+        )
+
+        this.setState({
+          passwordFormStatus: {
+            success: false,
+            error: formatErrors(response),
+          },
+        })
       })
   }
 
@@ -53,6 +75,7 @@ class UserSettingsPage extends React.Component {
 
     return (
       <UserSettings
+        passwordFormStatus={this.state.passwordFormStatus}
         handlePasswordFormSubmit={this.handleRedefinePassword}
         t={t}
       />

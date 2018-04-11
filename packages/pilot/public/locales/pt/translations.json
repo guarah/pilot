@@ -61,7 +61,10 @@
           "buttonSubmit": "Salvar alterações",
           "buttonCancel": "Cancelar",
           "fieldRequired": "Esse campo é requirido",
-          "passwordEqual": "As senhas não conferem"
+          "passwordEqual": "As senhas não conferem",
+          "alert": {
+            "success": "Senha atualizada com sucesso."
+          }
         }
       }
     }
