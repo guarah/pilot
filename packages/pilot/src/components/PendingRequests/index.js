@@ -14,8 +14,9 @@ import style from './style.css'
 
 const renderRequests = (requests, onCancelHandler) => requests.map((
   {
-    // eslint-disable-next-line camelcase
-    title: requestTitle, created_at, amount,
+    amount,
+    created_at, // eslint-disable-line camelcase
+    title: requestTitle,
   },
   index
 ) => (
@@ -25,14 +26,16 @@ const renderRequests = (requests, onCancelHandler) => requests.map((
     <td className={style.createdAt}>{created_at}</td> {/* eslint-disable-line camelcase */}
     <td>{requestTitle}</td>
     <td className={style.amount}>{amount}</td>
-    <td className={style.cancel}>
-      <Button
-        fill="outline"
-        icon={<IconClose width={12} height={12} />}
-        onClick={() => onCancelHandler(index)}
-        size="tiny"
-      />
-    </td>
+    {onCancelHandler &&
+      <td className={style.cancel}>
+        <Button
+          fill="outline"
+          icon={<IconClose width={12} height={12} />}
+          onClick={() => onCancelHandler(index)}
+          size="tiny"
+        />
+      </td>
+    }
   </tr>
 ))
 
@@ -53,8 +56,12 @@ const PendingRequests = ({
   </Card>
 )
 
+PendingRequests.defaultProps = {
+  onCancel: null,
+}
+
 PendingRequests.propTypes = {
-  onCancel: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   requests: PropTypes.arrayOf(
     PropTypes.shape({
       amount: PropTypes.string.isRequired,
