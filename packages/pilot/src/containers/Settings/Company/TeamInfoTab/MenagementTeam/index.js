@@ -23,7 +23,7 @@ class MenagementTeam extends React.Component {
     }
 
     this.handleSectionTitleClick = this.handleSectionTitleClick.bind(this)
-    this.handleMountBody = this.handleMountBody.bind(this)
+    this.contentRender = this.contentRender.bind(this)
   }
 
   handleSectionTitleClick () {
@@ -32,7 +32,7 @@ class MenagementTeam extends React.Component {
     })
   }
 
-  handleMountBody () {
+  contentRender () {
     const {
       t,
       team,
@@ -83,7 +83,7 @@ class MenagementTeam extends React.Component {
           />
           {
             this.state.collapsed ?
-              this.handleMountBody() :
+              this.contentRender() :
               null
           }
         </CardSection>
