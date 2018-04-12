@@ -12,18 +12,19 @@ import IconClose from 'emblematic-icons/svg/ClearClose24.svg'
 
 import style from './style.css'
 
+/* eslint-disable camelcase */
 const renderRequests = (requests, onCancelHandler) => requests.map((
   {
     amount,
-    created_at, // eslint-disable-line camelcase
+    created_at,
     title: requestTitle,
   },
   index
 ) => (
   <tr
-    key={`${created_at}_${requestTitle}_${amount}`} // eslint-disable-line camelcase
+    key={`${created_at}_${requestTitle}_${amount}`}
   >
-    <td className={style.createdAt}>{created_at}</td>{/* eslint-disable-line camelcase */}
+    <td className={style.createdAt}>{created_at}</td>
     <td>{requestTitle}</td>
     <td className={style.amount}>{amount}</td>
     {onCancelHandler &&
@@ -38,6 +39,7 @@ const renderRequests = (requests, onCancelHandler) => requests.map((
     }
   </tr>
 ))
+/* eslint-enable camelcase */
 
 const PendingRequests = ({
   title,
@@ -67,7 +69,7 @@ PendingRequests.propTypes = {
   requests: PropTypes.arrayOf(
     PropTypes.shape({
       amount: PropTypes.string.isRequired,
-      created_at: PropTypes.string.isRequired,
+      created_at: PropTypes.string.isRequired, // eslint-disable-line camelcase
       title: PropTypes.string.isRequired,
     })
   ).isRequired,

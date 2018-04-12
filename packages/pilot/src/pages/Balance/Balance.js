@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { withRouter } from 'react-router-dom'
@@ -6,8 +6,11 @@ import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
 import {
   __,
+  always,
+  anyPass,
   applySpec,
   assoc,
+  complement,
   compose,
   defaultTo,
   either,
@@ -21,10 +24,11 @@ import {
   pipe,
   prop,
   tail,
+  uncurryN,
   unless,
   when,
 } from 'ramda'
-import cockpit from 'cockpit'
+import cockpit from 'cockpit' // eslint-disable-line no-unused-vars
 import qs from 'qs'
 import {
   requestBalance,
@@ -33,10 +37,20 @@ import {
 import { requestLogout } from '../Account/actions'
 import BalanceContainer from '../../containers/Balance'
 
+import clientMock from './clientMock'
+
 const mapStateToProps = ({
-  account: { client },
+  account: {
+    client,
+    sessionId,
+  },
   balance: { loading, query },
-}) => ({ client, loading, query })
+}) => ({
+  client,
+  loading,
+  query,
+  sessionId,
+})
 
 const mapDispatchToProps = dispatch => ({
   onRequestBalance: (query) => {
@@ -51,7 +65,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const enhanced = compose(
-  translate('transactions'),
+  translate(['balance', 'transactions']),
   connect(
     mapStateToProps,
     mapDispatchToProps
@@ -128,29 +142,33 @@ const parseQueryUrl = pipe(
   mergeAll
 )
 
+const isNilOrEmpty = anyPass([isNil, isEmpty])
+
+const getValidId = uncurryN(2, defaultId => unless(
+  complement(anyPass([isNil, isNaN, isEmpty])), // eslint-disable-line no-restricted-globals
+  always(defaultId)
+))
+
 class Balance extends Component {
   constructor (props) {
     super(props)
-    const {
-      client,
-    } = this.props
+    // const {
+    //   client,
+    // } = this.props
 
     this.state = {
-      client: cockpit(client),
+      client: clientMock, // cockpit(client),
       query: {
-        id: '',
         dates: {
           start: moment().subtract(30, 'days'),
           end: moment(),
         },
-        offset: 1,
-        count: 15,
       },
+      result: {},
     }
 
     this.handleAnticipation = this.handleAnticipation.bind(this)
     this.handleCancelRequest = this.handleCancelRequest.bind(this)
-    this.handleChangeRecipient = this.handleChangeRecipient.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handlePageChange = this.handlePageChange.bind(this)
     this.handleWithdraw = this.handleWithdraw.bind(this)
@@ -160,42 +178,55 @@ class Balance extends Component {
   }
 
   componentDidMount () {
-    const urlBalanceQuery = this.props.history.location.search
+    const {
+      history: {
+        location,
+      },
+      match: {
+        params,
+      },
+    } = this.props
+    const urlBalanceQuery = location.search
+
     if (isEmpty(urlBalanceQuery)) {
-      this.updateQuery(this.props.query)
+      this.updateQuery(params.id, this.props.query)
     } else {
-      this.requestData(parseQueryUrl(urlBalanceQuery))
+      this.requestData(params.id, parseQueryUrl(urlBalanceQuery))
     }
   }
 
   componentWillReceiveProps (nextProps) {
-    const { location: { search } } = this.props // eslint-disable-line
+    const {
+      location: { search },
+      match: { params },
+    } = this.props
     const { location } = nextProps
 
     if (search !== location.search) {
-      this.requestData(parseQueryUrl(location.search))
+      this.requestData(params.id, parseQueryUrl(location.search))
     }
   }
 
-  updateQuery (query) {
+  updateQuery (id, query) {
     const buildBalanceQuery = pipe(
       normalizeQueryDatesToString,
       assoc('dates', __, query),
       qs.stringify
     )
-
-    this.props.history.push({
-      pathname: 'balance',
-      search: buildBalanceQuery(query),
+    const queryObject = isNilOrEmpty(query) ? this.state.query : query
+    const pathId = getValidId(this.props.sessionId, id)
+    this.props.history.replace({
+      pathname: `${pathId}`,
+      search: buildBalanceQuery(queryObject),
     })
   }
 
-  requestData (query) {
+  requestData (id, query) {
     this.props.onRequestBalance({ query })
 
     return this.state.client
       .balance
-      .search(query)
+      .search(id, query)
       .then((result) => {
         this.setState({ result })
         this.props.onReceiveBalance(result)
@@ -212,11 +243,6 @@ class Balance extends Component {
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
   handleCancelRequest (requestId) {
-    // TODO: add this method when it's available in API
-  }
-
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  handleChangeRecipient (id) {
     // TODO: add this method when it's available in API
   }
 
@@ -261,39 +287,55 @@ class Balance extends Component {
     } = this.state
 
     return (
-      <BalanceContainer
-        balance={balance}
-        dates={dates}
-        loading={loading}
-        // onAnticipationClick={this.handleAnticipation}
-        // onCancelRequestClick={this.handleCancelRequest}
-        // onChangeRecipientClick={this.handleChangeRecipient}
-        onDateChange={this.handleDateChange}
-        onPageChange={this.handlePageChange}
-        // onWithdrawClick={this.handleWithdraw}
-        recipient={recipient}
-        requests={requests}
-        search={search}
-        t={t}
-      />
+      <Fragment>
+        {!loading &&
+          <BalanceContainer
+            balance={balance}
+            dates={dates}
+            loading={loading}
+            // onAnticipationClick={this.handleAnticipation}
+            // onCancelRequestClick={this.handleCancelRequest}
+            onDateChange={this.handleDateChange}
+            onPageChange={this.handlePageChange}
+            // onWithdrawClick={this.handleWithdraw}
+            recipient={recipient}
+            requests={requests}
+            search={search}
+            t={t}
+          />
+        }
+      </Fragment>
     )
   }
 }
 
 Balance.propTypes = {
-  client: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  // eslint-disable-next-line react/forbid-prop-types, react/no-unused-prop-types
+  client: PropTypes.object.isRequired,
+  sessionId: PropTypes.string.isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
     location: PropTypes.shape({
       search: PropTypes.string,
     }).isRequired,
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
   loading: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  }).isRequired,
   onReceiveBalance: PropTypes.func.isRequired,
   onRequestBalance: PropTypes.func.isRequired,
   onRequestBalanceFail: PropTypes.func.isRequired,
-  query: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  query: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   t: PropTypes.func.isRequired,
+}
+
+Balance.defaultProps = {
+  query: null,
 }
 
 export default enhanced(Balance)

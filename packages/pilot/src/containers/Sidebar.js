@@ -1,9 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
+  anyPass,
+  filter,
   head,
+  is,
+  isEmpty,
+  isNil,
   pipe,
   split,
+  unless,
 } from 'ramda'
 import {
   Sidebar,
@@ -14,10 +20,15 @@ import {
 
 import Menu32 from 'emblematic-icons/svg/Menu32.svg'
 
-const getBasePath = pipe(
+const isInvalidString = anyPass([isNil, isEmpty, is(Number)])
+
+const getPathHead = pipe(
   split('/'),
+  filter(Boolean),
   head
 )
+
+const getBasePath = unless(isInvalidString, getPathHead)
 
 class SidebarContainer extends React.Component {
   constructor (props) {

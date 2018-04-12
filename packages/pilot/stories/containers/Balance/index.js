@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import moment from 'moment'
 import Balance from '../../../src/containers/Balance'
 import Section from '../../Section'
-import mock from './mock.json'
+import mock from '../../../src/containers/Balance/mock.json'
 
 class BalanceState extends PureComponent {
   constructor () {
@@ -33,7 +33,6 @@ class BalanceState extends PureComponent {
           dates={dates}
           onAnticipationClick={action('anticipation click')}
           onCancelRequestClick={action('cancel request click')}
-          onChangeRecipientClick={action('change recipient click')}
           onDateChange={action('date change')}
           onPageChange={action('page click')}
           onWithdrawClick={action('withdraw click')}

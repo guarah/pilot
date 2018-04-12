@@ -28,7 +28,7 @@ const mergeMomentAware = (a, b) => {
 
 const initialState = {
   loading: true,
-  query: '',
+  query: null,
 }
 
 export default function searchReducer (state = initialState, action) {
