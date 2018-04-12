@@ -17,6 +17,7 @@ import {
   pipe,
   pluck,
   prop,
+  reduce,
   subtract,
   sum,
   when,
@@ -73,10 +74,28 @@ const buildRequests = pipe(
   }))
 )
 
+const buildTotal = direction => pipe(
+  prop('per_day'),
+  reduce((acc, val) => {
+    const available = val.available.amount[direction]
+    const fee = val.available.fee[direction]
+
+    return acc + (available - fee)
+  }, 0)
+)
+
+const getOutgoing = pipe(
+  buildTotal('out'),
+  negate
+)
+
 const buildSearchTotal = applySpec({
-  outcoming: always(233213),
-  outgoing: always(213123),
-  net: always(21323),
+  outcoming: buildTotal('in'),
+  outgoing: getOutgoing,
+  net: pipe(
+    juxt([buildTotal('in'), getOutgoing]),
+    apply(subtract)
+  ),
 })
 
 const getOperationDate = dateType => pipe(

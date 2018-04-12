@@ -23,7 +23,7 @@ const balance = client => (recipientId, {
   Promise.props({
     recipient: client.recipients.find({ id: recipientId }),
     balance: client.balance.find({ recipientId }),
-    summary: client.balanceOperations.days({
+    per_day: client.balanceOperations.days({
       recipient_id: recipientId,
       status,
       start_date: startDate,
