@@ -1,0 +1,10 @@
+div.containerHeaderTable {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p.containerHeaderTableCount {
+  font-weight: bold;
+}

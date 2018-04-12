@@ -3,12 +3,16 @@ import PropTypes from 'prop-types'
 import {
   Grid,
   Row,
+  Col,
   CardSection,
   CardContent,
   CardSectionDoubleLineTitle,
+  Button,
 } from 'former-kit'
 import IconTeam from 'emblematic-icons/svg/Sellers32.svg'
+import IconAdd from 'emblematic-icons/svg/Add24.svg'
 import TableUser from './TableUser'
+import style from './style.css'
 
 class MenagementTeam extends React.Component {
   constructor (props) {
@@ -37,10 +41,23 @@ class MenagementTeam extends React.Component {
       <CardContent>
         <Grid>
           <Row>
-            <TableUser
-              t={t}
-              team={team}
-            />
+            <Col palm={12} tablet={12} desk={12} tv={12} className={style.containerHeaderTable}>
+              <Button
+                disabled
+                relevance="high"
+                icon={<IconAdd width={12} height={12} />}
+              > Novo Usuário
+              </Button>
+              <p className={style.containerHeaderTableCount}>{team.length} usuários</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col palm={12} tablet={12} desk={12} tv={12}>
+              <TableUser
+                t={t}
+                team={team}
+              />
+            </Col>
           </Row>
         </Grid>
       </CardContent>
