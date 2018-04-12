@@ -82,7 +82,7 @@ class MenagementTeam extends React.Component {
             }
           />
           {
-            this.state.collapsed ?
+            !this.state.collapsed ?
               this.contentRender() :
               null
           }
