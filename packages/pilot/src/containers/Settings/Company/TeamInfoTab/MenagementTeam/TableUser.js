@@ -6,9 +6,10 @@ import {
 } from 'former-kit'
 
 const getColumns = () => ([
-  { title: 'Nome', accessor: ['name'], orderable: true },
-  { title: 'E-mail', accessor: ['email'], orderable: true },
-  { title: 'Permissão', accessor: ['role'], orderable: true },
+  { title: 'Nome', accessor: ['name'], orderable: false },
+  { title: 'E-mail', accessor: ['email'], orderable: false },
+  { title: 'Permissão', accessor: ['role'], orderable: false },
+  { title: 'Data de Criação', accessor: ['date_created'], orderable: false },
 ])
 
 class TableUser extends React.Component {
@@ -43,6 +44,7 @@ TableUser.propTypes = {
     name: PropTypes.string,
     role: PropTypes.string,
     email: PropTypes.string,
+    date_created: PropTypes.string,
   })).isRequired,
 }
 

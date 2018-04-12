@@ -17,21 +17,25 @@ const Team = [
     name: 'Geisson Machado',
     role: 'admin',
     email: 'geisonnm@hotmail.com',
+    date_created: '2018-02-27T21:06:00.669Z',
   },
   {
     name: 'Pedro Adas',
     role: 'ready_only',
     email: 'pedro.adas@hotmail.com',
+    date_created: '2018-02-27T21:06:00.669Z',
   },
   {
     name: 'Vitor Lima',
     role: 'admin',
     email: 'vitor.lime@hotmail.com',
+    date_created: '2018-02-27T21:06:00.669Z',
   },
   {
     name: 'Vinicius',
     role: 'ready_only',
     email: 'vinirock@hotmail.com',
+    date_created: '2018-02-27T21:06:00.669Z',
   },
 ]
 

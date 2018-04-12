@@ -103,6 +103,7 @@ CompanySettings.propTypes = {
     name: PropTypes.string,
     role: PropTypes.string,
     email: PropTypes.string,
+    date_created: PropTypes.string,
   })).isRequired,
 }
 
