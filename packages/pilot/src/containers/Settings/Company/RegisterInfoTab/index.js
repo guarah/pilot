@@ -7,32 +7,22 @@ import {
   CardSectionDoubleLineTitle,
 } from 'former-kit'
 import IconPercent from 'emblematic-icons/svg/Percent32.svg'
-import {
-  title,
-} from './style.css'
+import CompanyInformation from './CompanyInformation'
+
+import { title } from './style.css'
 
 const RegisterInfoTab = ({
   t,
+  companyInformation,
 }) => (
   <Fragment>
     <p className={title}>{t('settings.company.card.register.cardTitle')}</p>
 
-    <CardTitle
-      title={t('settings.company.card.register.cardCompany')}
+    <CompanyInformation
+      t={t}
+      companyInformation={companyInformation}
     />
-    <CardContent>
-      <CardSection>
-        <CardSectionDoubleLineTitle
-          title={t('settings.company.card.register.title.company')}
-          icon={<IconPercent height={16} width={16} />}
-          subtitle={t('settings.company.card.register.subtitle.company')}
-          collapsed={false}
-          // onClick={
-          //   this.handleSectionTitleClick('personalInfoSectionCollapsed')
-          // }
-        />
-      </CardSection>
-    </CardContent>
+
     <CardContent>
       <CardSection>
         <CardSectionDoubleLineTitle
@@ -85,6 +75,12 @@ const RegisterInfoTab = ({
 
 RegisterInfoTab.propTypes = {
   t: PropTypes.func.isRequired,
+  companyInformation: PropTypes.shape({
+    name: PropTypes.string,
+    full_name: PropTypes.string,
+    cnpj: PropTypes.string,
+    site_url: PropTypes.string,
+  }).isRequired,
 }
 
 export default RegisterInfoTab

@@ -18,6 +18,13 @@ const enhanced = compose(
   translate()
 )
 
+const CompanyInformation = {
+  name: 'Nem Nome Tem',
+  full_name: 'Nem Nome Tem',
+  cnpj: '54346352000122',
+  site_url: 'http://www.nemnometem.me',
+}
+
 class CompanySettingsPage extends React.Component {
   constructor (props) {
     super(props)
@@ -37,6 +44,7 @@ class CompanySettingsPage extends React.Component {
         this.setState({ companyInfo })
       })
   }
+
   render () {
     const {
       t,
@@ -55,6 +63,7 @@ class CompanySettingsPage extends React.Component {
         pricing={pricing}
         apiKeys={apiKeys}
         team={team}
+        companyInformation={CompanyInformation}
         t={t}
       />
     )

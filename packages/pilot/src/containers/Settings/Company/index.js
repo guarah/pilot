@@ -32,6 +32,7 @@ class CompanySettings extends Component {
       pricing,
       team,
       apiKeys,
+      companyInformation,
     } = this.props
 
     return (
@@ -72,7 +73,7 @@ class CompanySettings extends Component {
                   <TabItem text={t('settings.company.tab.register')}>
                     <RegisterInfoTab
                       t={t}
-                      pricing={pricing}
+                      companyInformation={companyInformation}
                     />
                   </TabItem>
                 </TabBar>
@@ -116,6 +117,12 @@ CompanySettings.propTypes = {
       }),
     })
   ).isRequired,
+  companyInformation: PropTypes.shape({
+    name: PropTypes.string,
+    full_name: PropTypes.string,
+    cnpj: PropTypes.string,
+    site_url: PropTypes.string,
+  }).isRequired,
 }
 
 CompanySettings.defaultProps = {
