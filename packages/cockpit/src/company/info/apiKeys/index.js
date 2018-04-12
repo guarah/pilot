@@ -1,6 +1,7 @@
 import {
   applySpec,
   pathOr,
+  juxt,
 } from 'ramda'
 
 const getApiKey = env => pathOr('', ['api_key', env])
@@ -12,8 +13,15 @@ const getApiKeys = env => applySpec({
   encryptionKey: encryptionKey(env),
 })
 
-export default applySpec({
-  live: getApiKeys('live'),
-  test: getApiKeys('test'),
+const createApiKey = (title, env) => company => ({
+  title,
+  keys: getApiKeys(env)(company),
 })
+
+const apiKeysArray = [
+  createApiKey('live', 'live'),
+  createApiKey('test', 'test'),
+]
+
+export default juxt(apiKeysArray)
 

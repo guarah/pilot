@@ -1,0 +1,10 @@
+.title {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.content {
+  word-break: break-all;
+}

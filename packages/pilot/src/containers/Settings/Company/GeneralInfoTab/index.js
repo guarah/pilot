@@ -6,6 +6,7 @@ import ApiKey from './ApiKey'
 const GeneralInfoTab = ({
   t,
   pricing,
+  apiKeys,
 }) => (
   <Fragment>
     <Pricing
@@ -14,6 +15,7 @@ const GeneralInfoTab = ({
     />
     <ApiKey
       t={t}
+      apiKeys={apiKeys}
     />
   </Fragment>
 )
@@ -34,6 +36,15 @@ GeneralInfoTab.propTypes = {
       price: PropTypes.string,
     })),
   }).isRequired,
+  apiKeys: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      keys: PropTypes.shape({
+        encryptionKey: PropTypes.string,
+        apiKey: PropTypes.string,
+      }),
+    })
+  ).isRequired,
 }
 
 export default GeneralInfoTab

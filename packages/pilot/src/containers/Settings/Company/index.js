@@ -31,6 +31,7 @@ class CompanySettings extends Component {
       t,
       pricing,
       team,
+      apiKeys,
     } = this.props
 
     return (
@@ -53,6 +54,7 @@ class CompanySettings extends Component {
                     <GeneralInfoTab
                       t={t}
                       pricing={pricing}
+                      apiKeys={apiKeys}
                     />
                   </TabItem>
                   <TabItem text={t('settings.company.tab.product')}>
@@ -105,6 +107,15 @@ CompanySettings.propTypes = {
     email: PropTypes.string,
     date_created: PropTypes.string,
   })).isRequired,
+  apiKeys: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      keys: PropTypes.shape({
+        encryptionKey: PropTypes.string,
+        apiKey: PropTypes.string,
+      }),
+    })
+  ).isRequired,
 }
 
 CompanySettings.defaultProps = {

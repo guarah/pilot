@@ -51,7 +51,7 @@ class CompanySettingsPage extends React.Component {
     this.state = {
       companyInfo: {
         pricing: {},
-        apiKeys: {},
+        apiKeys: [],
       },
     }
     this.client = cockpit(props.client)
@@ -71,12 +71,15 @@ class CompanySettingsPage extends React.Component {
     const {
       companyInfo: {
         pricing,
+        apiKeys,
       },
     } = this.state
+    console.log(this.state.companyInfo)
 
     return (
       <CompanySettings
         pricing={pricing}
+        apiKeys={apiKeys}
         team={Team}
         t={t}
       />

@@ -9,6 +9,7 @@ import TotalDisplay from './TotalDisplay'
 import TransactionDetailsCard from './TransactionDetailsCard'
 import TransactionHead from './TransactionHead'
 import TreeView from './TreeView'
+import ApiKeySection from './ApiKey'
 
 storiesOf('Components', module)
   .add('Customer card', () => (
@@ -34,5 +35,8 @@ storiesOf('Components', module)
   ))
   .add('TreeView', () => (
     <TreeView />
+  ))
+  .add('ApiKey', () => (
+    <ApiKeySection />
   ))
 
