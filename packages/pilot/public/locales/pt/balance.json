@@ -1,0 +1,14 @@
+{
+  "balance": {
+    "account": "Conta",
+    "agency": "Agência",
+    "bank_code": "Banco",
+    "recipient": "Recebedor",
+    "type": "Tipo de conta"
+  },
+  "account": "Conta",
+  "agency": "Agência",
+  "bank_code": "Banco",
+  "recipient": "Recebedor",
+  "type": "Tipo de conta"
+}
